@@ -1,7 +1,7 @@
 #   CHAPTER 1.1 Deploying Docker
 This chapter explains how to install the Docker and Portaineron your Kali linux machine
 
-> On your kali linux machine open a terminal. Use SSH and login with your kali and password (kali/kali). First we're going to add the docker repository to our package repository on Kali.
+On your kali linux machine open a terminal. Use SSH and login with your kali and password (kali/kali). First we're going to add the docker repository to our package repository on Kali.
 
 ```yml
  ssh kali@yourkalimachine
@@ -11,7 +11,7 @@ This chapter explains how to install the Docker and Portaineron your Kali linux 
 
  ```
 
-> Next, let's install docker community edition and enable it as a service so it starts up automatically with the operating system.
+Next, let's install docker community edition and enable it as a service so it starts up automatically with the operating system.
 
 ```yml
  sudo apt-get update
@@ -20,7 +20,7 @@ This chapter explains how to install the Docker and Portaineron your Kali linux 
  sudo systemctl enable docker
 ```
 
-> Finally we're going to allow docker to run wih the current non-root user (kali).
+Finally we're going to allow docker to run wih the current non-root user (kali).
 
 ```yml
 sudo usermod -aG docker ${USER}
