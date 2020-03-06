@@ -3,10 +3,10 @@ CHAPTER 1: Threat Hunting Lab - MDBOOK and Wiki Instructions
 
 This chapter explains how to install the Threat Hunting WIKI and Labs guide
 
-> On you kali linux machine open a terminal. Use SSH and login with your student-id and password (student01/student01)
+> On your kali linux machine open a terminal. Use SSH and login with your kali and password (kali/kali). First we're going to add the docker repository to our package repository on Kali.
 
 ```yml
- ssh studentxx@yourkalimachine
+ ssh kali@yourkalimachine
  cd /opt
  git clone https://github.com/crimsoncore/wiki.git
 ```
