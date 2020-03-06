@@ -18,7 +18,7 @@ You should see the following structure:
 > 
 ```yml
 cd /opt
-sudo docker run -it -name mdbook -v /opt/wiki:/opt/wiki -p 3000:3000 -p 3001:3001 lschoonaert/mdbook
+sudo docker run -it --name mdbook -v /opt/wiki:/opt/wiki -p 3000:3000 -p 3001:3001 lschoonaert/mdbook
 ```
 MDbook will automatically monitor for new updates, so you can pull down new versions of the documentation whenever available:
 
