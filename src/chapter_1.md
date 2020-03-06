@@ -14,7 +14,7 @@ You should see the following structure:
 
 ![Screenshot command](./0/assets/01-gitclonewiki.jpg)
 
-> Install mdbook (if you want to run this locally on your server) - in the Lab environment you can simple connect to the ELK server (10.0.0.5) on port 3000.
+> Install **mdbook** (if you want to run this locally on your server) - in the Lab environment you can simple connect to the ELK server (10.0.0.5) on port 3000.
 > 
 ```yml
 cd /opt
