@@ -1,7 +1,7 @@
-#   CHAPTER 1.1 Deploying Docker
+#   CHAPTER 1.1: Deploying Docker & Docker-Compose
 >This chapter explains how to install the Docker and Docker-Compose on your Kali linux machine
 
-![Screenshot command](./1/assets/01-docker.png)
+![Screenshot command](./1.1/assets/01-docker.png)
 
 On your kali linux machine open a terminal. Use SSH and login with your kali and password (kali/kali). First we're going to add the docker repository to our package repository on Kali.
 
@@ -38,13 +38,16 @@ We'll be using **docker-compose** files to deploy containers in most of our lab 
 
 >*source: https://github.com/docker/compose*
 
-![Screenshot command](./1/assets/01-docker-compose.png)
+![Screenshot command](./1.1/assets/01-docker-compose.png)
 
 The following command downloads docker compose version 1.25.0 to the /usr/local/bin directory - which is in the default PATH.
 
 ```yml
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
+
+![Screenshot command](./1.1/assets/01-docker-compose-download.jpg)
+
 Let's make this executable by adding the proper permissions to the file:
 
 ```yml
@@ -52,4 +55,4 @@ ls /usr/local/bin/docker-compose -lah
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose -version
 ```
-![Screenshot command](./1/assets/01-docker-compose-chmod.jpg)
+![Screenshot command](./1.1/assets/01-docker-compose-chmod.jpg)
