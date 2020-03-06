@@ -1,5 +1,4 @@
-# Chapter 1
-Threat Hunting Lab - MDBOOK and Wiki Instructions
+CHAPTER 0: Threat Hunting Lab - MDBOOK and Wiki Instructions
 ====
 
 This chapter explains how to install the Threat Hunting WIKI and Labs guide>
@@ -21,4 +20,9 @@ You should see the following structure:
 cd /opt
 sudo docker run -it -v /opt/wiki:/opt/wiki -p 3000:3000 -p 3001:3001 lschoonaert/mdbook
 ```
+MDbook will automatically monitor for new updates, so you can pull down new versions of the documentation whenever available:
 
+```yml
+cd /opt/wiki
+sudo git pull
+```

@@ -1,7 +1,6 @@
-Threat Hunting Lab 1
+CHAPTER 1 : Threat Hunting Lab - RECON
 ====
-Recon
-------
+
 The following lab will show how to perform recon by living off the land - using native windows tools and commands to get some situational awareness.
 
 - net commands
