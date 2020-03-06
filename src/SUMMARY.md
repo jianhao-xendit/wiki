@@ -11,6 +11,6 @@
 
 - [Chapter 3](./chapter_3.md)
 
-- [Admininstrator Chapter](./Admin_1.md)
-  - [  Terraform](./Terraform.md)
-  - [  Terraform](./Ansible.md)
+- [Chapter X - Administration](./Admin.md)
+  - [  Chapter X.1 - Terraform](./Terraform.md)
+  - [  Chapter X.2 - Ansible](./Ansible.md)
