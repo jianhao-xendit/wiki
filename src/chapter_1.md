@@ -1,4 +1,4 @@
-CHAPTER 0: Threat Hunting Lab - MDBOOK and Wiki Instructions
+CHAPTER 1: Threat Hunting Lab - MDBOOK and Wiki Instructions
 ====
 
 This chapter explains how to install the Threat Hunting WIKI and Labs guide
