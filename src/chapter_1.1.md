@@ -3,6 +3,8 @@
 
 ![Screenshot command](./1.1/assets/01-docker.png)
 
+***Source: https://www.docker.com/products/docker-desktop*** 
+
 On your kali linux machine open a terminal. Use SSH and login with your kali and password (kali/kali). First we're going to add the docker repository to our package repository on Kali.
 
 ```yml

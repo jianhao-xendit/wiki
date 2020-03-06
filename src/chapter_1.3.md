@@ -5,6 +5,8 @@ CHAPTER 1.3: Installing MDBOOK and Wiki Instructions
 
 On your kali linux machine open a terminal. Use SSH and login with your kali username and password (***kali/kali***). First we're going to clone the MarkDown files from the wiki to our local machine> Then we'll clone the ThreatHunt github repository that contains all the labs and docker containers.
 
+***Source: https://github.com/rust-lang/mdBook***
+
 ```code
  ssh kali@yourkalimachine
 ``` 

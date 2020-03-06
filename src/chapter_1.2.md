@@ -1,7 +1,11 @@
 #   CHAPTER 1.2: Installing Portainer
 >This chapter explains how to install the Portainer on your Kali linux machine
 
-**Source: https://www.portainer.io/installation/**
+_"With a GUI based tool like **Portainer CE**, you can leave the complex CLI commands behind and focus on delivering outstanding software. Portainer CE lets you skip up the learning curve and get your docker environments up and running quickly. Once you are up and running, Portainer CE gives you the tools (and the built-in knowledge of our experts) to keep your environments up."_
+
+![Screenshot command](./1.2/assets/01-portainerlogo.jpg)
+
+***Source: https://www.portainer.io/installation/***
 
 On your kali linux machine open a terminal. Use SSH and login with your kali username and password (***kali/kali***). In the ***/opt/threathunt/docker-compose*** directory you will find a docker-compose file to download an build portainer:
 
@@ -9,7 +13,7 @@ On your kali linux machine open a terminal. Use SSH and login with your kali use
 cd /opt/threathunt/docker-compose
 sudo docker-compose -f dc.portainer.yml up -d
 ```
-**Source: /opt/threathunt/docker-compose/dc.portainer.yml**
+***Source: /opt/threathunt/docker-compose/dc.portainer.yml***
 ```yml
 version: '2'
 services:
