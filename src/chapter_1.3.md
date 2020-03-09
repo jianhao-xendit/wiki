@@ -24,7 +24,7 @@ Install **mdbook** (if you want to run this locally on your Kali machine) - in t
 
 ![Screenshot command](./1.3/assets/02-mdbook.jpg)
 
-Navigate to the folder where you cloned the wiki.git repository, in the example above this is the /opt/wiki directory ($PWD)
+Navigate to the folder where you cloned the wiki.git repository, in the example above this is the /opt/wiki directory ($PWD).
 
 ```code
 cd /opt/wiki
@@ -35,7 +35,7 @@ sudo docker run -it --name mdbook -v $PWD:/opt/wiki -p 3000:3000 -p 3001:3001 cr
 
 ![Screenshot command](./1.3/assets/03-dockersharing.jpg)
 
-MDbook will automatically monitor for new updates, so you can pull down new versions of the documentation whenever available:
+MDbook will automatically monitor for new updates, so you can pull down new versions of the documentation whenever available by going to the directory where you cloned the repository:
 
 ```code
 cd /opt/wiki
