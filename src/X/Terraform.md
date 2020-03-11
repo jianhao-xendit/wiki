@@ -6,7 +6,7 @@ On your windows/mac machine install
   - https://code.visualstudio.com/#alt-downloads
   
 
-![Screenshot command](./X/assets/02-VSC.png)
+![Screenshot command](./assets/02-VSC.png)
 
 ```code
 cd /opt
@@ -34,4 +34,4 @@ Since we are deploying some images from the azure market place, we need to accep
 ```code
 az vm image terms accept --urn kali-linux:kali-linux:kali:2019.2.0
 ```
-![Screenshot command](./X/assets/01-EULA.jpg)
+![Screenshot command](./assets/01-EULA.jpg)

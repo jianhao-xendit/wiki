@@ -18,11 +18,11 @@ On your kali linux machine open a terminal. Use SSH and login with your kali use
 ```
 You should see the following structure for the MarkDown files:
 
-![Screenshot command](./1.3/assets/01-gitclonewiki.jpg)
+![Screenshot command](./assets/01-gitclonewiki.jpg)
 
 Install **mdbook** (if you want to run this locally on your Kali machine) - in the Lab environment you can simple connect to the ELK server (10.0.0.5) on port 3000, as we have already pre-installed this.
 
-![Screenshot command](./1.3/assets/02-mdbook.jpg)
+![Screenshot command](./assets/02-mdbook.jpg)
 
 Navigate to the folder where you cloned the wiki.git repository, in the example above this is the /opt/wiki directory ($PWD).
 
@@ -33,7 +33,7 @@ sudo docker run -it --name mdbook -v $PWD:/opt/wiki -p 3000:3000 -p 3001:3001 cr
 
 > If you're doing this on MacOS it's better to clone the repo to a default shared directory by your docker-desktop client. The __"/opt" directory__ is not supported on a Mac, so it's better to do this from your ?/Users/youruser (or ~ home directory).
 
-![Screenshot command](./1.3/assets/03-dockersharing.jpg)
+![Screenshot command](./assets/03-dockersharing.jpg)
 
 MDbook will automatically monitor for new updates, so you can pull down new versions of the documentation whenever available by going to the directory where you cloned the repository:
 
