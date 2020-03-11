@@ -6,9 +6,15 @@
   - [  Chapter 1.3 - MDBook](./1.3/chapter_1.3.md)
   - [  Chapter 1.4 - Sigma](./1.4/chapter_1.4.md)
   - [  Chapter 1.5 - Sysmon](./1.5/chapter_1.5.md)
+  - [  Chapter 1.6 - ELK](./1.6/chapter_1.6.md)
+
 - [Chapter 2 - Labs ](./2/chapter_2.md)
   - [Chapter 2.1 - Recon ](./2.1/chapter_2.1.md) 
-
+  - [Chapter 2.2 - Persistence ](./2.2/chapter_2.2.md) 
+  - [Chapter 2.3 - Credential Access ](./2.3/chapter_2.3.md)
+  - [Chapter 2.4 - Kerberoast ](./2.4/chapter_2.4.md)
+  - [Chapter 2.5 - Lateral Movement ](./2.5/chapter_2.6.md) 
+-   
 - [Chapter 3](./3/chapter_3.md)
 
 - [Chapter X - Administration](./X/Admin.md)
