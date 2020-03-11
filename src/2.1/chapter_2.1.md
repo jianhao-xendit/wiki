@@ -11,16 +11,16 @@ The following lab will show how to perform recon by living off the land - using 
 
 On your windows machine, open a command prompt and type the following commands. Please note that he actual output will probably be different for your windows machine and user name.
 
-![Screenshot command](./2.1/assets/01-command.png)
+![Screenshot command](./assets/01-command.png)
 
 ```yml
  whoami
 ```
 
-![Screenshot whoami](./2.1/assets/02-whoami.jpg)
+![Screenshot whoami](./assets/02-whoami.jpg)
 
 ```yml
  whoami /groups
 ```
-![Screenshot whoamigroups](./2.1/assets/02-whoamigroups.jpg)
+![Screenshot whoamigroups](./assets/02-whoamigroups.jpg)
 
