@@ -5,7 +5,7 @@
 > **LOG SOURCES**:
 > - EID 4679 - Kerberos Service Request
 > - Log : windows security eventlog
-> - Collected on:  Domain Controller
+> - Collected on : **Domain Controller**
 > - Reference : https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4769
 > 
 > 
