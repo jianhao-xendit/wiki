@@ -7,7 +7,8 @@
   - [  Chapter 1.4 - Sigma](./1.4/chapter_1.4.md)
   - [  Chapter 1.5 - Sysmon](./1.5/chapter_1.5.md)
   - [  Chapter 1.6 - ELK](./1.6/chapter_1.6.md)
-  - [  Chapter 1.7 - Enrichment](./1.7/chapter_1.7.md)
+  - [  Chapter 1.7 - Winlogbeat](./1.7/chapter_1.7.md)
+  - [  Chapter 1.8 - Enrichment](./1.8/chapter_1.8.md)
 
 - [Chapter 2 - Labs ](./2/chapter_2.md)
   - [Chapter 2.1 - Recon ](./2.1/chapter_2.1.md) 

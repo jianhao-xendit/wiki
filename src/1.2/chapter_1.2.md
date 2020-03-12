@@ -1,9 +1,9 @@
 #   CHAPTER 1.2: Installing Portainer
->This chapter explains how to install the Portainer on your Kali linux machine
+>This chapter explains how to install the Portainer on your `Kali linux machine`
 
 _"With a GUI based tool like **Portainer CE**, you can leave the complex CLI commands behind and focus on delivering outstanding software. Portainer CE lets you skip up the learning curve and get your docker environments up and running quickly. Once you are up and running, Portainer CE gives you the tools (and the built-in knowledge of our experts) to keep your environments up."_
 
-![Screenshot command](./assets/01-portainerlogo.jpg)
+![Screenshot command](./assets/01-portainerlogo.png)
 
 ***Source: https://www.portainer.io/installation/***
 
