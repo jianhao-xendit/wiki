@@ -29,3 +29,8 @@ ansible-playbook -i hosts site.yml --list-tasks
 
 Visual Studio Code CODE-SERVER shortcuts
 cmd + ` = open terminal
+
+BYOBU
+
+MAC VISUAL STUDIO CODE
+    add extension -> Remote SSH
