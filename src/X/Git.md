@@ -1,8 +1,10 @@
 #   Chapter X.0 - Git
 
-> All the Threat Hunting Academy repositories, dockerfiles, ansible and terraform scripts can be found here:  
-> ***https://github.com/crimsoncore***  
-> ***https://hub.docker.com/u/crimsoncorelabs***  
+> All the Threat Hunting Academy repositories, dockerfiles, ansible and terraform scripts can be found below.  
+
+> GIT SOURCE CODE : ***[https://github.com/CrimsonCORE](https://github.com/crimsoncore)***  
+> DOCKER IMAGES : ***[https://hub.docker.com/u/CrimsonCORELabs](https://hub.docker.com/u/crimsoncorelabs)***  
+
 
 **1.1 - Working with branches**
 ----
