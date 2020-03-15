@@ -34,3 +34,20 @@ BYOBU
 
 MAC VISUAL STUDIO CODE
     add extension -> Remote SSH
+
+    test
+
+
+    Installing Git on MACOS
+
+    https://git-scm.com/download/mac
+
+    or in terminal type git amd this will promppt form developer tools to be installed
+
+    or with homebrew
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+brew install git
+
+    https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/
