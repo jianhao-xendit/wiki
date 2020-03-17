@@ -12,12 +12,16 @@
 
 - [Chapter 2 - Labs ](./2/chapter_2.md)
   - [Chapter 2.1 - Recon ](./2.1/chapter_2.1.md) 
+    - [Chapter 2.1.1 - BloodHound ](./2.1.1/chapter_2.1.1.md)
   - [Chapter 2.2 - Persistence ](./2.2/chapter_2.2.md) 
-  - [Chapter 2.3 - Credential Access ](./2.3/chapter_2.3.md) 
-    - [Chapter 2.3.2 - Building the detection ](./2.3.2/chapter_2.3.2.md) 
+  - [Chapter 2.3 - Credential Access ](./2.3/chapter_2.3.md)
+    - [Chapter 2.3.1 - Mimikatz & Rubeus ](./2.3.1/chapter_2.3.1.md) 
+    - [Chapter 2.3.2 - Building the detection ](./2.3.2/chapter_2.3.2.md)
+    - [Chapter 2.3.3 - Visualizing the detection ](./2.3.2/chapter_2.3.3.md) 
   - [Chapter 2.4 - Kerberoasting ](./2.4/chapter_2.4.md) 
     - [Chapter 2.4.1 - Password cracking ](./2.4.1/chapter_2.4.1.md)
     - [Chapter 2.4.2 - Building the detection ](./2.4.2/chapter_2.4.2.md)
+    - [Chapter 2.4.3 - Visualizing the detection ](./2.4.3/chapter_2.4.3.md) 
   - [Chapter 2.5 - Lateral Movement ](./2.5/chapter_2.5.md) 
   - [Chapter 2.6 - ... ](./2.6/chapter_2.6.md) 
 
