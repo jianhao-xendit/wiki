@@ -1,2 +1,2 @@
 # Chapter 1 - Infrastructure
- Welcome to the **Exclusive Networks** Threat Hunting Training, this is the official lab guide that will guide you through setting up the Lab infrastructure. Students will all have their own Windows 10 client Machine and a Kali Linux that will be used as central logging server running an ELK stack. 
+ Welcome to the Exclusive Networks **Threat Hunting Academy**, this is the official lab guide that will guide you through setting up the Lab infrastructure. Students will all have their own `Windows 10 client machine` and a `kali linux machine` that will be used as central logging server running an ELK stack. 
