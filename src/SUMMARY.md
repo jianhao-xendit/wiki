@@ -17,7 +17,7 @@
   - [Chapter 2.3 - Credential Access ](./2.3/chapter_2.3.md)
     - [Chapter 2.3.1 - Mimikatz & Rubeus ](./2.3.1/chapter_2.3.1.md) 
     - [Chapter 2.3.2 - Building the detection ](./2.3.2/chapter_2.3.2.md)
-    - [Chapter 2.3.3 - Visualizing the detection ](./2.3.2/chapter_2.3.3.md) 
+    - [Chapter 2.3.3 - Visualizing the detection ](./2.3.3/chapter_2.3.3.md) 
   - [Chapter 2.4 - Kerberoasting ](./2.4/chapter_2.4.md) 
     - [Chapter 2.4.1 - Password cracking ](./2.4.1/chapter_2.4.1.md)
     - [Chapter 2.4.2 - Building the detection ](./2.4.2/chapter_2.4.2.md)

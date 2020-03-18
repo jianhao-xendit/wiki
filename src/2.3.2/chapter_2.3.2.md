@@ -1,6 +1,10 @@
-# Chapter 2.3.2 - Building the detection 
+# Chapter 2.3.2 - CREDENTIAL DUMPING - Building the detection 
 ----
 > Mitre: T1003 - Credential Dumping
+
+![Screenshot T1003](./assets/01-T1003.jpeg)
+
+
 
 > **LOG SOURCES**:
 > - EID 10 (SYSMON) - Process Access

@@ -1,4 +1,4 @@
-# Chapter 2.4.2 - Building the detection 
+# Chapter 2.4.2 - KERBEROAST - Building the detection 
 ----
 > Mitre: T1208 - Kerberoast
 
@@ -7,8 +7,9 @@
 > - Log : windows **security** eventlog
 > - Collected on : **Domain Controller**
 > - Reference : https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4769
-> 
-> 
+
+![Screenshot T1208](./assets/01-T1208.png)
+***Source: https://posts.specterops.io/detection-spectrum-198a0bfb9302***
 
 Sigma Rule:
 ```yaml
