@@ -1,6 +1,8 @@
-# Chapter 2.4.2 - KERBEROAST - Building the detection 
+# Chapter 2.4.2 - KERBEROASTING - Building the detection 
 ----
-> Mitre: T1208 - Kerberoast
+> Mitre: [T1208](https://attack.mitre.org/techniques/T1208/) - Kerberoasting 
+
+
 
 > **LOG SOURCES**:
 > - EventID **4679** - Kerberos Service Request

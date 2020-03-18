@@ -10,7 +10,7 @@ _"System Monitor (**Sysmon**) is a Windows system service and device driver that
 
 ***Source: https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon*** 
 
-Connect with `GUACAMOLE RDP` to your Windows10 machine, select the right student number that was assigned to you in the beginning of the class:
+Connect with `GUACAMOLE RDP` to your Windows 10 machine, select the right student number that was assigned to you in the beginning of the class:
 
 ![Screenshot command](./assets/02-guacamole.jpg)
 

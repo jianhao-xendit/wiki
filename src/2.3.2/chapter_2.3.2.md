@@ -1,6 +1,6 @@
 # Chapter 2.3.2 - CREDENTIAL DUMPING - Building the detection 
 ----
-> Mitre: T1003 - Credential Dumping
+> Mitre: [T1003](https://attack.mitre.org/techniques/T1003/) - Credential Dumping
 
 ![Screenshot T1003](./assets/01-T1003.jpeg)
 

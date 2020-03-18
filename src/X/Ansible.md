@@ -20,8 +20,14 @@ Open this folder in VSC, it will prompt you to open it again but as a container.
 ansible-playbook -i ls-production -l ws site.yml --tags domain
 ```
 
-**"init"** will create student accounts on the DC, amd install all the software packages (git, winlogbeat, processhacker, sysmon)
+**"init"** on DC will create student accounts on the DC, and install all the software packages (git, winlogbeat, processhacker, sysmon).
 
 ```code
 ansible-playbook -i ls-production -l dc site.yml --tags init
+```
+
+**"init"** on WS will install all the software packages (git, winlogbeat, processhacker, sysmon) on the student workstations.
+
+```code
+ansible-playbook -i ls-production -l ws site.yml --tags init
 ```
