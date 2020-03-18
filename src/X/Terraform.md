@@ -84,7 +84,7 @@ Public Hostname: az-mq-`lsazure`.westeurope.cloudapp.azure.com
 `For class teachers only : The RabbitMQ server can be accessed through SSH with the command below.` Students should not SSH into this server as it's part of the shared classroom infrastructure.
 
 ```code
-ssh testadmin@az-mq-lsazure.westeurope.cloudapp.azure.com
+ssh thadmin@az-mq-lsazure.westeurope.cloudapp.azure.com
 ```
 
 The ***RabbitMQ / Guacamole*** server serves multiple purposes, it runs a webserver on port 8080 for Guacamole, which is an Remote Desktop (RDP) jump host over HTTP. This way ***students*** don't need to install client software in order to access their Windows 10 machine.
@@ -94,6 +94,9 @@ COPY/PASTE with guacamole : https://community.microstrategy.com/s/article/How-to
 ```code
 http://az-mq-lsazure.westeurope.cloudapp.azure.com:8080/guacamole/
 ```
+
+**Guacamole Username: thadmin**  
+**Guacamole Password : Password1234!**
 
 ![Screenshot command](./assets/07-guacamole.jpg)
 

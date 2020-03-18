@@ -12,6 +12,11 @@ _"System Monitor (**Sysmon**) is a Windows system service and device driver that
 
 Connect with `GUACAMOLE RDP` to your Windows 10 machine, select the right student number that was assigned to you in the beginning of the class:
 
+> **NOTE**: The username and password for the Guacamole server are ***"thadmin" / "Password1234!"***. For the RDP connection you username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
+
+**Guacamole Username: thadmin**  
+**Guacamole Password : Password1234!**
+
 ![Screenshot command](./assets/02-guacamole.jpg)
 
 Then open a powershell prompt, download sysmon and unzip it to C:\Program Files\sysmon. You can ofcourse also simply download the file with your web browser and unzip the archive.
