@@ -20,7 +20,7 @@ Open this folder in VSC, it will prompt you to open it again but as a container.
 ansible-playbook -i ls-production -l ws site.yml --tags domain
 ```
 
-**"init"** on DC will create student accounts on the DC, and install all the software packages (git, winlogbeat, processhacker, sysmon).
+**"init"** on DC will create student accounts on the DC, and install all the software packages (git, winlogbeat, processhacker, sysmon). This will also configure winlogbeat on the DC to start forwarding messages to the Logstash service (listening on PORT 5044) on the RabbitMQ server (IP: 10.0.0.6 )..
 
 ```code
 ansible-playbook -i ls-production -l dc site.yml --tags init
