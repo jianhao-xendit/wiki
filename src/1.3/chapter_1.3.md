@@ -14,7 +14,7 @@ On your kali linux machine open a terminal. Use SSH and login with your kali use
  ```code
  cd /opt
  sudo git clone https://github.com/crimsoncore/wiki.git
- sudo git clone https://gitlab.com/Schoonaert/threathunt.git
+ sudo git clone https://github.com/crimsoncore/threathunt.git
 ```
 You should see the following structure for the MarkDown files:
 
