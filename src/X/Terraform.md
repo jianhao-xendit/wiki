@@ -56,7 +56,7 @@ DOMAIN CONTROLLER
 Internal Hostname: dc01.acme.local  
 Internal IP : 10.0.0.4/24   
 AD domain name : acme.local    
-Username : TestAdmin@acme.local    
+Username : thadmin@acme.local    
 Password : Password1234!  
 Public Hostname: dc01-`lsazure`.westeurope.cloudapp.azure.com   
 Publicly exposed services - RDP
@@ -66,7 +66,7 @@ ELK SERVER
 
 >**Ubuntu 16.04 - ELK**  
 Internal IP : 10.0.0.5/24    
-Username : TestAdmin@acme.local    
+Username : thadmin   
 Password : Password1234!  
 Public Hostname: az-elk-`lsazure`.westeurope.cloudapp.azure.com  
 Publicly exposed services - 
@@ -77,7 +77,7 @@ RABBITMQ / GUACAMOLE SERVER
 >**Ubuntu 16.04 - RabbitMQ/Guacamole**  
 IP : 10.0.0.5/24   
 domain name : acme.local    
-Username : TestAdmin@acme.local    
+Username : thadmin   
 Password : Password1234!  
 Public Hostname: az-mq-`lsazure`.westeurope.cloudapp.azure.com  
 
@@ -95,7 +95,7 @@ COPY/PASTE with guacamole : https://community.microstrategy.com/s/article/How-to
 http://az-mq-lsazure.westeurope.cloudapp.azure.com:8080/guacamole/
 ```
 
-**Guacamole Username: thadmin**  
+**Guacamole Username : thadmin**  
 **Guacamole Password : Password1234!**
 
 ![Screenshot command](./assets/07-guacamole.jpg)
