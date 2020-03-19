@@ -12,3 +12,5 @@ On your kali linux machine open a terminal. Use SSH and login with your kali use
 ```code
  ssh kali@yourkalimachine
 ``` 
+
+RDP
