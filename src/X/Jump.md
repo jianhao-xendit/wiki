@@ -1,17 +1,28 @@
 # Chapter X.3 - Setting up the initial Jump Host
 >This chapter explains how to install your initial deployment server (`Jump`) that is used to deploy the ***terraform*** to deploy infrastructure, and then deploy packages and configurations with ***ansible***
 
-docker run -it --name coder -p 127.0.0.1:8080:8080 -v "/opt:/home/coder/project" crimsoncorelabs/coder:latest
+```code
+docker run -it -p 127.0.0.1:8080:8080 -v "/Users/luks/_code:/home/coder/project" -e PASSWORD=Password1234! crimsoncorelabs/coder:latest
+```
 
+on your macos - cd into /Users/lusk/_code
+
+```code 
 git clone git@github.com:crimsoncore/ansible_jump.git
+git clone git@github.com:crimsoncore/threathunt_jump.git
+```
 
 from your PC:
+```code
 ssh-copy-id -i ~/.ssh/id_rsa thadmin@az-jump-lsazure.westeurope.cloudapp.azure.com
+```
 
-In VSC coder web gui
+In VSC coder web gui on your azure coder, necessary to push code changes to github
+```code
 git config --global user.name "luks_coder"
 git config --global user.email "luks@crimsoncore.be"
 git config --global --list
+```
 
 > when you use git (cline, pull, push) do ***not*** use sudo, this will fail since the public SSH cert is copied under the current user's .ssh folder. Running with sudo will use ROOT privileges and no cert is associated with this account.
 

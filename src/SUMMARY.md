@@ -19,7 +19,7 @@
     - [Chapter 2.3.2 - Building the detection ](./2.3.2/chapter_2.3.2.md)
     - [Chapter 2.3.3 - Visualizing the detection ](./2.3.3/chapter_2.3.3.md) 
   - [Chapter 2.4 - Kerberoasting ](./2.4/chapter_2.4.md) 
-    - [Chapter 2.4.1 - Password cracking ](./2.4.1/chapter_2.4.1.md)
+    - [Chapter 2.4.1 - Kerberoast ](./2.4.1/chapter_2.4.1.md)
     - [Chapter 2.4.2 - Building the detection ](./2.4.2/chapter_2.4.2.md)
     - [Chapter 2.4.3 - Visualizing the detection ](./2.4.3/chapter_2.4.3.md) 
   - [Chapter 2.5 - Lateral Movement ](./2.5/chapter_2.5.md) 
