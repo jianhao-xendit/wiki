@@ -22,6 +22,8 @@ Import-Module .\Invoke-Kerberoast.ps1
 Invoke-Kerberoast -OutputFormat Hashcat
 ```
 
+default output is for john
+
 Open the file "hashcapture.txt" with Notepad++  
 In the menu select "Encoding" and set it to "Encode in UTF-8" 
 Save the file and the BOM will be gone.
