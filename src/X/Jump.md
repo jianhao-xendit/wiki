@@ -49,3 +49,17 @@ MAC VISUAL STUDIO CODE
     test
 
 
+PREPPING YOUR REPOSITORIES FOR YOU CODE SERVER
+----
+In VSC (using web brwoser to your code server)  
+open terminal (ctrl + `)
+
+```code
+cd project/
+mkdir project_threathunt
+git clone git@github.com:crimsoncore/wiki.git
+git clone git@github.com:crimsoncore/terraform_threathunt.git
+git clone git@github.com:crimsoncore/ansible_threathunt.git
+git clone git@github.com:crimsoncore/threathunt.git
+git clone git@github.com:crimsoncore/jupyter_threathunt.git
+```
