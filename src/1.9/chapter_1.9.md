@@ -6,7 +6,9 @@ python3 -m pip install elastalert
 
 mkdir /opt/elastalert  
 mkdir /opt/elastalert/rules  
-nano /opt/elastalert/config.yaml  
+mkdir /opt/elastalert/log  
+mkdir /opt/elastalert/config    
+nano /opt/elastalert/config/config.yaml    
 
 ```yml
 rules_folder: rules
