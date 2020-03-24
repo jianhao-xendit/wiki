@@ -38,3 +38,4 @@
   - [  Chapter X.1 - Terraform](./X/Terraform.md)
   - [  Chapter X.2 - Ansible](./X/Ansible.md)
   - [  Chapter X.3 - Coder](./X/Jump.md)
+  - [  Chapter X.4 - Coder](./X/Jupyter.md)
