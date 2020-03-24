@@ -93,6 +93,5 @@ alert_text_args:
 alert:
 - "slack"
 slack:
-# The <"https://xxxxx.slack.com/services/new/incoming-webhook"> webhook URL that includes your auth data and $
-slack_webhook_url: "https://hooks.slack.com/services/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"
+slack_webhook_url: "https://hooks.slack.com/services/pasteyourhookhere"
 ```
