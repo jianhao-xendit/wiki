@@ -72,3 +72,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose -version
 ```
 ![Screenshot command](./assets/01-docker-compose-chmod.jpg)
+
+Docker Cheat Sheet
+====
+docker image ls -a  
+docker system prune -a  
