@@ -20,10 +20,11 @@ Login to your `kali linux machine` with SSH and login with your kali username an
 ssh thadmin@yaz-kali-lsazure.westeurope.cloudapp.azure.com
 ``` 
 
-First we're going to install sigma-tools using ***pip3*** 
+First we're going to install sigma-tools using ***pip3*** , we're hardcoding the version  (0.16.0)here for lab purposes.
 
 ```code
-python3 -m pip install sigmatools
+python3 -m pip install sigmatools==0.16.0
+pip3 show sigmatools
 ``` 
 
 Then we'll clone the sigma rules from the ***crimsoncore/sigma.git*** repository this is a fork of the official repository and allows us to work on a more static code for this training.
