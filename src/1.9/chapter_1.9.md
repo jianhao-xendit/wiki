@@ -48,17 +48,46 @@ add :
 
 OriginalFileName: winlog.event_data.OriginalFileName
 
+Original Sigma rule:
+```yaml
+title: Net commands
+id:
+status: experimental
+description: Detects recon using net.exe commands
+references:
+    - https://
+author: Luk Schoonaert (CrimsonCORE)
+date: 2020/03/22
+tags:
+    - attack.
+    - attack.t
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection:
+        EventID: 1
+        OriginalFileName:
+            - '*net.exe'
+            - '*net1.exe'
+    condition: selection
+falsepositives:
+    - Very likely, needs more tuning
+level: high
+```
+
 ```code 
-sigmac -Okeyword_blacklist=* -t es-qs -c /opt/sigma/tools/config/winlogbeat.yml /opt/sigma/rules/netview2.yml
+sigmac -Okeyword_blacklist=* -t es-qs -c /opt/sigma/tools/config/winlogbeat.yml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
 ```
 
 result query:  
->(winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1" AND winlog.event_data.OriginalFileName:("net1.exe"))
+>(winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1" AND winlog.event_data.OriginalFileName.keyword:(*net.exe *net1.exe))
 
 CREATE ELASTALERT rule
+====
 
 ```code
-sigmac --target elastalert --config /opt/sigma/tools/config/winlogbeat.yml --output /opt/elastalert/rules/netview.yaml /opt/sigma/rules/netview2.yaml
+sigmac --target elastalert --config /opt/sigma/tools/config/winlogbeat.yml --output /opt/threathunt/elastalert/rules/alert_win_crimsoncore_net.yaml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
 ```
 
 _don't forget to change the index from winlogbeat-* to logstash, or change this in your MAPPING file (/opt/sigma/tools/config/winlogbeat.yml)_
