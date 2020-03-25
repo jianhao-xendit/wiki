@@ -1,8 +1,14 @@
 #   Chapter 1.9 - Alerting
+
+Manual Install of elastalert on `Kali Linux Machine`
+====
+
+>we'll be skipping these steps, and instead install ElastALert as a docker container on your Kali Linux machine, where also you ELK stack is running in docker.
+
 apt install python3-pip  
 python3 -m pip install pip --upgrade && python3 -m pip install wheel  
 sudo -H pip3 install --ignore-installed PyYAML  
-python3 -m pip install elastalert  
+python3 -m pip install elastalert==0.2.1  
 
 mkdir /opt/elastalert  
 mkdir /opt/elastalert/rules  
