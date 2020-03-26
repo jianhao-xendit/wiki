@@ -10,6 +10,8 @@
   - [  Chapter 1.7 - Winlogbeat](./1.7/chapter_1.7.md)
   - [  Chapter 1.8 - Enrichment](./1.8/chapter_1.8.md)
   - [  Chapter 1.9 - Alerting](./1.9/chapter_1.9.md)
+    - [  Chapter 1.9.1 - ElastAlert](./1.9.1/chapter_1.9.1.md)
+    - [  Chapter 1.9.1 - Slack](./1.9.2/chapter_1.9.2.md)
 
 - [Chapter 2 - Labs ](./2/chapter_2.md)
   - [Chapter 2.1 - Recon ](./2.1/chapter_2.1.md) 

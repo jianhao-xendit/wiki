@@ -38,4 +38,59 @@ git clone https://github.com/crimsoncore/sigma.git
 Working with Sigma
 ====
 
-blacklist command
+Let's make a very simple Sigma rule that detects net.exe commands being executed. Before we start, let's edit the sigma mapping file:  
+
+```code
+nano /opt/sigma/tools/config/winlogbeat.yml
+```
+
+![Screenshot command](./assets/01-Sigma_winlogbeat.jpg)
+
+and change the index to the one we have configured in our ELK stack, the default value here is "winlogbeat-*" which we're going to change to "logstash-*" :
+
+>We're also going to add the field winlog.event_data.OriginalFileName to the mapping file, scroll down a bit in the winlogbeat.yml file:
+
+![Screenshot command](./assets/01-Sigma_winlogbeat_orgfile.jpg)
+
+
+Very simple sigma rule for detecting net commands:
+
+```yaml
+nano /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
+```
+
+copy/paste the following code, you can see here the OriginalFileName mapping is used, but it wasn't known in the default winlogbeat mapping as this is a rather new field in symon:
+
+```yaml
+title: Net commands
+id:
+status: experimental
+description: Detects recon using net.exe commands
+references:
+    - https://
+author: Luk Schoonaert (CrimsonCORE)
+date: 2020/03/22
+tags:
+    - attack.
+    - attack.t
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection:
+        EventID: 1
+        OriginalFileName:
+            - '*net.exe'
+            - '*net1.exe'
+    condition: selection
+falsepositives:
+    - Very likely, needs more tuning
+level: high
+```
+
+```code 
+sigmac -Okeyword_blacklist=* -t es-qs -c /opt/sigma/tools/config/winlogbeat.yml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
+```
+
+result query:  
+>(winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1" AND winlog.event_data.OriginalFileName:(*net.exe *net1.exe))
