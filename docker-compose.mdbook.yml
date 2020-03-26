@@ -5,9 +5,10 @@ services:
     container_name: mdbook
     restart: unless-stopped
     volumes:
-    - /Users/luks/_code/wiki:/opt/wiki
+    - $PWD:/opt/wiki
     ports:
-      - 3333:3000
+      - 3000:3000
+      - 3001:3001
     networks:
       - elastic
 networks:

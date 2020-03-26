@@ -77,3 +77,12 @@ Docker Cheat Sheet
 ====
 docker image ls -a  
 docker system prune -a  
+
+BUILDING LOCAL IMAGES WITH DOCKER
+====
+
+``` 
+docker build -t docker_mdbook:lean .
+docker images
+docker run -it --name mdbook_lean -v /Users/luks/_code/wiki:/opt/wiki -p4000:3000 docker_mdbook:lean
+```
