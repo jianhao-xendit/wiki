@@ -78,11 +78,27 @@ Docker Cheat Sheet
 docker image ls -a  
 docker system prune -a  
 
-BUILDING LOCAL IMAGES WITH DOCKER
+BUILDING LOCAL IMAGES WITH DOCKER (`NOT LAB RELATED`)
 ====
 
+ 
+
 ``` 
+git clone https://github.com/crimsoncore/docker_mdbook.git
+cd docker_mdbook
 docker build -t docker_mdbook:lean .
 docker images
-docker run -it --name mdbook_lean -v /Users/luks/_code/wiki:/opt/wiki -p4000:3000 docker_mdbook:lean
+```
+
+git clone your wiki and move to that folder:
+
+```
+docker run -it --name mdbook_lean -v $pwd:/opt/wiki -p3000:3000 docker_mdbook:lean
+```
+
+If you want to push the image to your docker hub:
+
+```
+docker login
+docker push crimsoncorelabs/mdbook
 ```
