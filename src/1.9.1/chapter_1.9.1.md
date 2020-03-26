@@ -22,7 +22,7 @@ mkdir /opt/elastalert/config
 nano /opt/elastalert/config/config.yaml    
 ```
 
-edit the config.yaml:
+And then edit the config.yaml:
 
 ```yml
 rules_folder: rules
