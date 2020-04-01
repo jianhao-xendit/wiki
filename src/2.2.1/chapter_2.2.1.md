@@ -62,7 +62,7 @@ filter {
 > Don't forget to restart your logstash docker container, you can do this through portainer or by typing the following command:
 > ```code
 > docker container restart logstash_rest
-> docker container logs logstash_rest
+> docker container logs logstash_rest --follow
 > ```
 
 now perform the psexec again - check your kibana interface and don't forget to refresh the index fields (some new fields have been added)
