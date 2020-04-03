@@ -1,5 +1,5 @@
 # Chapter 2.3 Credential Access
-----
+
 Mitre: T1003 
 --
 ***source: https://attack.mitre.org/techniques/T1003/***

@@ -66,3 +66,12 @@ filter {
 > ```
 
 now perform the psexec again - check your kibana interface and don't forget to refresh the index fields (some new fields have been added)
+
+PERSISTENCE USER CREATION
+====
+```code
+net user systembackup Default3104 /add /active:"yes" /expires:"never" /passwordchg:"NO"
+net localgroup "Remote Desktop Users" systembackup /add
+```
+
+eventid 4720, 4732
