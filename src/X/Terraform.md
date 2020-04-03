@@ -57,7 +57,7 @@ Internal Hostname: dc01.acme.local
 Internal IP : 10.0.0.4/24   
 AD domain name : acme.local    
 Username : thadmin@acme.local    
-Password : Password1234!  
+Password : PROVIDED_PASSWORD  
 Public Hostname: dc01-`lsazure`.westeurope.cloudapp.azure.com   
 Publicly exposed services - RDP
 
@@ -67,7 +67,7 @@ ELK SERVER
 >**Ubuntu 16.04 - ELK**  
 Internal IP : 10.0.0.5/24    
 Username : thadmin   
-Password : Password1234!  
+Password : PROVIDED_PASSWORD  
 Public Hostname: az-elk-`lsazure`.westeurope.cloudapp.azure.com  
 Publicly exposed services - 
 
@@ -78,7 +78,7 @@ RABBITMQ / GUACAMOLE SERVER
 IP : 10.0.0.5/24   
 domain name : acme.local    
 Username : thadmin   
-Password : Password1234!  
+Password : PROVIDED_PASSWORD  
 Public Hostname: az-mq-`lsazure`.westeurope.cloudapp.azure.com  
 
 `For class teachers only : The RabbitMQ server can be accessed through SSH with the command below.` Students should not SSH into this server as it's part of the shared classroom infrastructure.
@@ -96,7 +96,7 @@ http://az-mq-lsazure.westeurope.cloudapp.azure.com:8080/guacamole/
 ```
 
 **Guacamole Username : thadmin**  
-**Guacamole Password : Password1234!**
+**Guacamole Password : PROVIDED_PASSWORD**
 
 ![Screenshot command](./assets/07-guacamole.jpg)
 

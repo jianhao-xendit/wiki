@@ -2,7 +2,7 @@
 >This chapter explains how to install your initial deployment server (`Jump`) that is used to deploy the ***terraform*** to deploy infrastructure, and then deploy packages and configurations with ***ansible***
 
 ```code
-docker run -it -p 127.0.0.1:8080:8080 -v "/Users/luks/_code:/home/coder/project" -e PASSWORD=Password1234! crimsoncorelabs/coder:latest
+docker run -it -p 127.0.0.1:8080:8080 -v "/Users/luks/_code:/home/coder/project" -e PASSWORD=PROVIDED_PASSWORD crimsoncorelabs/coder:latest
 ```
 
 on your macos - cd into /Users/lusk/_code

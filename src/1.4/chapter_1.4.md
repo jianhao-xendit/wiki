@@ -13,7 +13,7 @@ Installing Sigma
 Login to your `kali linux machine` with SSH and login with your kali username and password 
 
 **Kali Username : thadmin**  
-**Kali Password : Password1234!**
+**Kali Password : PROVIDED_PASSWORD**
 
 
 ```code

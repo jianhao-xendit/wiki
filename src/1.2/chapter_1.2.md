@@ -33,7 +33,7 @@ networks:
     driver: bridge
 ```
 
-> NOTE: You cloned the threathunt repository to /opt/threathunt - this folder contains a default configuration for portainer with the username and password ***thadmin/Password1234!***. 
+> NOTE: You cloned the threathunt repository to /opt/threathunt - this folder contains a default configuration for portainer with the username and password ***thadmin/PROVIDED_PASSWORD***. 
 
 ![Screenshot command](./assets/01-portainer.jpg)
 
