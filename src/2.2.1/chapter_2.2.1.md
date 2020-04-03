@@ -74,4 +74,7 @@ net user systembackup Default3104 /add /active:"yes" /expires:"never" /passwordc
 net localgroup "Remote Desktop Users" systembackup /add
 ```
 
-eventid 4720, 4732
+**Event IDs:**  
+4720 account created  
+4722 account enabled  
+4732, (4728,4758) account added to group  
