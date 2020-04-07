@@ -39,13 +39,36 @@ and add the following - notice we're using a different port than the standard 50
 input {
   beats {
     port => 5045
-    type => "beats"
     ssl => true
-    ssl_certificate => “/etc/pki/logstash/logstash.crt”
-    ssl_key => “/etc/pki/logstash/logstash.key”
+    ssl_certificate => "/usr/share/logstash/pki/logstash.crt"
+    ssl_key => "/usr/share/logstash/pki/logstash.key"
   }
 }
 ```
 then restart you logstash container:
 ```code
 docker container restart logstashrest
+```
+
+start updog in the PKI directory to host the certs  
+
+ON YOUR WINDOWS machine
+surf to the folder and download the logstasg.crt
+
+http://yourkalimachine:9090
+
+copy the file to "C:\program files\winlogbeat-7.4.2-windows-x86_64"
+
+and update the config to reflect the following:
+
+```yaml
+output.logstash:
+  hosts: ["172.16.100.157:5045"]
+ # ssl.certificate: "C:/logstash.crt"
+  ssl.certificate_authorities: ["C:/logstash.crt"]
+ # ssl.key: "c:/logstash.key"
+  ssl.verification_mode: none
+```
+
+THIS IS THE WAY: https://github.com/Busindre/How-to-configure-SSL-for-FileBeat-and-Logstash-step-by-step
+

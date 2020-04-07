@@ -11,6 +11,7 @@ On your kali linux machine open a terminal. Use SSH and login with your kali use
 
 ```code
 cd /opt/threathunt/docker-compose
+sudo docker-compose -f dc.portainer.yml pull 
 sudo docker-compose -f dc.portainer.yml up -d
 ```
 ***Source: /opt/threathunt/docker-compose/dc.portainer.yml***

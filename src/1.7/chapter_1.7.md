@@ -70,3 +70,6 @@ You have now created your Elastic index, and you will see a screen similar to th
 
 ![Screenshot command](./assets/03-kibanacreated.jpg)
 
+TROUBLESHOOTING WINLOGBEAT CONFIG FILES
+====
+.\winlogbeat.exe test output -e -d "*"
