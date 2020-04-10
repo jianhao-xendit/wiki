@@ -50,3 +50,4 @@
   - [  Chapter X.2 - Ansible](./X/Ansible.md)
   - [  Chapter X.3 - Coder](./X/Jump.md)
   - [  Chapter X.4 - Jupyter](./X/Jupyter.md)
+  - [  Chapter X.5 - DNS](./X/DNS.md)
