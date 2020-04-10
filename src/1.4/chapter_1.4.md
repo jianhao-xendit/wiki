@@ -17,7 +17,7 @@ Login to your `kali linux machine` with SSH and login with your kali username an
 
 
 ```code
-ssh thadmin@yaz-kali-lsazure.westeurope.cloudapp.azure.com
+ssh thadmin@az-kali-lsazure.westeurope.cloudapp.azure.com
 ``` 
 
 First we're going to install sigma-tools using ***pip3*** , we're hardcoding the version  (0.16.0)here for lab purposes.
