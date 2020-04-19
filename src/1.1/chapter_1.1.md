@@ -17,16 +17,18 @@ _"Containers are an abstraction at the app layer that packages code and dependen
 On your kali linux machine open a terminal. Use SSH and login with your kali and password (kali/kali). First we're going to add the docker repository to our package repository on Kali.
 
 ```yml
- ssh kali@yourkalimachine
- ```
+ssh kali@yourkalimachine
+```
  
  ```yml
- curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+apt-get update
+apt-get install curl
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 ```
 
 ```yml
- echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list
- ```
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list
+```
 
 Next, let's install **docker community edition** and enable it as a service so it starts up automatically with the operating system.
 
