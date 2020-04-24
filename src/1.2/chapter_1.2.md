@@ -7,14 +7,22 @@ _"With a GUI based tool like **Portainer CE**, you can leave the complex CLI com
 
 ***Source: https://www.portainer.io/installation/***
 
-On your kali linux machine open a terminal. Use SSH and login with your kali username and password (***kali/kali***). In the ***/opt/threathunt/docker-compose*** directory you will find a docker-compose file to download an build portainer:
+On your kali linux machine open a terminal. Use SSH and login with your kali username and password (***kali/kali***). 
+
+> NOTE: If /opt/threathunt is not present, you might have to clone this manually. Normally in this training the machines should be provisioned with the necessary git repos and you can do a pull for the laytest updates. You can do a do a full clone like this:
+
+```code
+git clone https://github.com/crimsoncore/threathunt.git
+```
+
+In the ***/opt/threathunt/docker-compose*** directory you will find a docker-compose file to download an build portainer:
 
 ```code
 cd /opt/threathunt/docker-compose
-sudo docker-compose -f dc.portainer.yml pull 
-sudo docker-compose -f dc.portainer.yml up -d
+sudo docker-compose -f docker-compose.portainer.yml pull 
+sudo docker-compose -f docker-compose.portainer.yml up -d
 ```
-***Source: /opt/threathunt/docker-compose/dc.portainer.yml***
+***Source: /opt/threathunt/docker-compose/docker-compose.portainer.yml***
 ```yml
 version: '2'
 services:
