@@ -16,34 +16,50 @@ _"Containers are an abstraction at the app layer that packages code and dependen
 
 On your kali linux machine open a terminal. Use SSH and login with your kali and password (kali/kali). First we're going to add the docker repository to our package repository on Kali.
 
-```yml
+```code
 ssh kali@yourkalimachine
 ```
  
- ```yml
+ ```code
 apt-get update
 apt-get install curl
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 ```
 
-```yml
+```code
 echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list
 ```
 
-Next, let's install **docker community edition** and enable it as a service so it starts up automatically with the operating system.
+Next, let's install **docker community edition** and 
 
-```yml
+```code
  sudo apt-get update
  sudo apt-get install -y docker-ce
+```
+
+>A simpler way to do this is just running this script which will do all of the above =)
+
+```code
+curl -sSL https://get.docker.com/ | sh
+```
+
+Enable docker as a service so it starts up automatically with the operating system.
+
+```code
  sudo systemctl status docker
  sudo systemctl enable docker
 ```
 
 Finally we're going to allow docker to run wih the current non-root user (kali).
 
-```yml
+```code
 sudo usermod -aG docker ${USER}
 ```
+
+
+
+
+
 1.1 Installing Docker-Compose
 ====
 

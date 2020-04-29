@@ -75,3 +75,6 @@ Edit /usr/local/zeek/networks.cfg to add the IP addresses and short descriptions
 ```
 
 Edit /usr/local/zeek/etc/zeekctl.cfg and set the
+
+CompressLogs = 0
+LogRotationInterval = 1
