@@ -7,6 +7,15 @@ PUT /winlogbeat-*/_alias/all_logs
 PUT /logstash-*/_alias/all_logs
 GET /_cat/aliases
 
+```yaml
+POST /_aliases?pretty
+{
+    "actions" : [
+        { "remove" : { "index" : "winlogbeat-*", "alias" : "alias1" } }
+    ]
+}
+```
+
 Winlogbeat templates:
 ----
 
