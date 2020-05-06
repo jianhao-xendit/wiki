@@ -1,6 +1,10 @@
 [book]
-authors = ["Luk"]
+authors = ["Luk Schoonaert"]
 language = "en"
 multilingual = false
 src = "src"
 title = "Threat Hunting Training [Exclusive Networks] (c) 2020"
+
+[output.html.fold]
+enable = true
+level = 1
