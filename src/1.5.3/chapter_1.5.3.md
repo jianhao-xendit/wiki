@@ -17,7 +17,6 @@ tail -f audit.log
 Configure
 ====
 
-
 -w: This stands for where, and it points to the object that we want to monitor. In this case, it's /etc/passwd.  
 
 -p: This indicates the object's permissions that we want to monitor. In this case, we're monitoring to see when anyone either tries to (w)rite to the file or tries to make (a)ttribute changes. (The other two permissions that we can audit are (r)ead and e(x)ecute.)  
@@ -36,8 +35,6 @@ service auditd reload
 tail -f audit.log 
 ```
 
--k = filter key on an audit rule
-
 sudo ausearch -i -k passwd_changes
 sudo ausearch -i -k passwd_changes | grep test
 sudo ausearch -i -k passwd_changes | grep SYSCALL
@@ -46,6 +43,9 @@ sudo ausearch -i -k opt_dir_monitor | grep proctitle
 if you restart the auditd service - these rules will be deleted.  
 
 nano /etc/audit/rules.d/audit.rules
+
+![Screenshot command](./assets/01-auditd-rules.jpg)
+
 
 
 to log usernames instead of uid (user id's)
