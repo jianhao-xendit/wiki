@@ -59,5 +59,12 @@ List the active rules:
 sudo auditctl -l
 ```
 
+AUTH Log
+====
+
+/var/log/auth.log
+
+
+
 ***Resources:***  
 https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-auditing-system-on-centos-7
