@@ -24,49 +24,24 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
 
 ![Screenshot command](./assets/02-guacamole.jpg)
 
-Let's start by opening powershell open your Windows 10 machine by clicking on the windows logo in the bottom left corner, and just start typing "power":
+441  cd mkdir  
+  442  cd packetbeat/  
+  443  ls  
+  444  curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.6.2-linux-x86_64.tar.gz  
+  445  tar xzvf packetbeat-7.6.2-linux-x86_64.tar.gz  
+  446  ls  
+  447  cd packetbeat-7.6.2-linux-x86_64/  
+  448  ls  
+  449  nano packetbeat.yml   
+  450  ifconfig  
+  451  nano packetbeat.yml   
+  452  packetbeat setup --dashboards  
+  453  ls  
+  454  ./packetbeat setup --dashboards  
+  455  ./packetbeat   
+  456  sudo service packetbeat start  
+  457  cat README.md   
+  459  ./packetbeat -c packetbeat.yml -e &  
+  
+https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-geoip.html
 
-![Screenshot command](./assets/04-powershell.jpg)
-
-```code
-cd "c:\program files\
-
-```
-
-Open your web browser (preferably chrome) and surf to http://kibana-az-elk-`lsazure`.westeurope.cloudapp.azure.com/
-
-You will be prompted to authenticate:
-
-**Username:**
-```code
-test
-```
-**Password:**
-```code
-test
-```
-In Kibana:
-
-1. Click on ***"Management"***, the little cogs in the left bottom corner,
-2. then click on ***"Index Patterns"***,
-3. and finally click on ***"Create index pattern"***
-
-![Screenshot command](./assets/03-kibanaindex.jpg)
-
-1. Enter the index name "logstash-windows*"
-2. Click "Next Step"
-
-![Screenshot command](./assets/03-kibanadefine.jpg)
-
-1. Select the "time filter field" and select "@timestamp"
-2. Click on "Create index pattern"
-
-![Screenshot command](./assets/03-kibanatime.jpg)
-
-You have now created your Elastic index, and you will see a screen similar to this:
-
-![Screenshot command](./assets/03-kibanacreated.jpg)
-
-TROUBLESHOOTING WINLOGBEAT CONFIG FILES
-====
-.\winlogbeat.exe test output -e -d "*"
