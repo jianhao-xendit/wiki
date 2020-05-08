@@ -5,6 +5,8 @@ Manual Install of elastalert on `Kali Linux machine`
 
 >In the labs we'll be skipping these steps, and instead install ElastALert as a docker container on your `Kali Linux machine`, where also you ELK stack is running in docker.
 
+***IMPORTANT: It might be necessary to restart your elastalert docker container so it can create its indexes in ELASTICSEARCH. When deploying the container, if ELASTIC SEARH hasn't fully started, this index creation will fail.***
+
 ```code
 apt install python3-pip  
 python3 -m pip install pip --upgrade && python3 -m pip install wheel  
