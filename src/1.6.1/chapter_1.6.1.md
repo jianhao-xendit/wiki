@@ -25,3 +25,8 @@ Winlogbeat templates:
 Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://localhost:9200/_template/winlogbeat-7.6.2
 
 https://www.elastic.co/guide/en/beats/winlogbeat/current/winlogbeat-template.html
+
+
+----
+
+curl -XDELETE localhost:9200/logstash-alsid*
