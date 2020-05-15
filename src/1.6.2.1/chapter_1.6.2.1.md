@@ -57,7 +57,7 @@ surf to the folder and download the logstasg.crt
 
 http://yourkalimachine:9090
 
-copy the file to "C:\program files\winlogbeat-7.4.2-windows-x86_64"
+copy the file to "C:\program files\winlogbeat-7.6.2-windows-x86_64"
 
 and update the config to reflect the following:
 
