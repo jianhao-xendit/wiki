@@ -13,11 +13,15 @@ From your Windows 10 Machine's Winlogbeat Agent -> Logstash (on RabbitMQ server)
 - RabbitMQ listens on **TCP 5672**
 
 ```code
-(New-Object System.Net.WebClient).DownloadFile("https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.4.2-windows-x86_64.zip", "C:\temp\winlogbeat-7.4.2-windows-x86_64.zip")
-Expand-Archive C:\temp\winlogbeat-7.4.2-windows-x86_64.zip -DestinationPath "C:\program files\"
-cd "C:\program files\winlogbeat-7.4.2-windows-x86_64"
+(New-Object System.Net.WebClient).DownloadFile("https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.6.2-windows-x86_64.zip", "C:\temp\winlogbeat-7.6.2-windows-x86_64.zip")
+Expand-Archive C:\temp\winlogbeat-7.6.2-windows-x86_64.zip -DestinationPath "C:\program files\"
+cd "C:\program files\winlogbeat-7.6.2-windows-x86_64"
 dir
 ```
+
+Now let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6) Logstash instance:
+
+![Screenshot command](./assets/01-winlogbeat_mq.jpg)
 
 Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number that was assigned to you in the beginning of the class:
 
@@ -31,11 +35,6 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
 Let's start by opening powershell open your Windows 10 machine by clicking on the windows logo in the bottom left corner, and just start typing "power":
 
 ![Screenshot command](./assets/04-powershell.jpg)
-
-```code
-cd "c:\program files\
-
-```
 
 Open your web browser (preferably chrome) and surf to http://kibana-az-elk-`lsazure`.westeurope.cloudapp.azure.com/
 
@@ -73,4 +72,10 @@ You have now created your Elastic index, and you will see a screen similar to th
 
 TROUBLESHOOTING WINLOGBEAT CONFIG FILES
 ====
-.\winlogbeat.exe test output -e -d "*"
+.\winlogbeat.exe test output -e -d "*"  
+
+maybe needed for Elastic SIEM:  
+
+```code
+Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://10.0.0.6:9200/_template/logstash-winlogbeat
+```
