@@ -28,7 +28,20 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
 USING AUDITBEAT
 ====
 
-make sure your hostname is correct:
+make sure your hostname is correct, Type the following command to edit /etc/hostname using nano or vi text editor:
+
+```code
+sudo nano /etc/hostname
+```
+Delete the old name and setup new name.  
+
+Next Edit the /etc/hosts file:
+
+```code
+sudo nano /etc/hosts
+```
+
+Delete the old name and setup new name, and finally reboot the system.  
 
 then let's install the auditbeat docker container
 
@@ -38,7 +51,18 @@ git clone https://github.com/crimsoncore/docker_auditbeat.git
 docker-compose -f dc.auditbeat.yml up
 ```
 
-if you make changes to your auditbeat.ym; configuration file yoiu can restart auditbeat with:
+let's add a tag here that indicates this is an ___ENDPOINT___ log coming from ___AUDITBEAT___
+
+```code
+cd /opt/threathunt/auditbeat
+nano auditbeat.yml
+```
+
+and add the following under the ***"General"*** section
+
+> tags: ["auditbeat", "endpoint"]
+
+if you make changes to your auditbeat.yml configuration file yoiu can restart auditbeat with:
 
 ```code
 docker container restart auditbeat
@@ -51,5 +75,8 @@ and check the logs:
 docker container logs auditbeat --follow
 ```
 
+> Don't forget to create `the auditbeat-*` Index in kibana
 
-> Don't forget to create the Index in kibana
+Now you can have a look at the Audibeat logs, filter on tags etc...
+
+![Screenshot command](./assets/01-kibana_auditbeat1.jpg)
