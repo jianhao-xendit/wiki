@@ -15,6 +15,7 @@ From your Kali Linux Machine's Auditbeat Agent -> Logstash (on RabbitMQ server) 
 ```code
 snippet
 ```
+
 Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number that was assigned to you in the beginning of the class:
 
 > **NOTE**: The username and password for the Guacamole server are ***"thadmin" / "PROVIDED_PASSWORD"***. For the RDP/SSH connection your username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
@@ -23,3 +24,32 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
 **Guacamole Password : PROVIDED_PASSWORD**
 
 ![Screenshot command](./assets/02-guacamole.jpg)
+
+USING AUDITBEAT
+====
+
+make sure your hostname is correct:
+
+then let's install the auditbeat docker container
+
+```code
+cd /opt/threathunt/
+git clone https://github.com/crimsoncore/docker_auditbeat.git
+docker-compose -f dc.auditbeat.yml up
+```
+
+if you make changes to your auditbeat.ym; configuration file yoiu can restart auditbeat with:
+
+```code
+docker container restart auditbeat
+docker container logs auditbeat --follow
+```
+
+and check the logs:
+
+```code
+docker container logs auditbeat --follow
+```
+
+
+> Don't forget to create the Index in kibana

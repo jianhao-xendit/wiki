@@ -1,1 +1,1 @@
-#   Chapter 1.7 - Winlogbeat
+#   Chapter 1.7 - Endpoint Log Collection
