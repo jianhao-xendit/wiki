@@ -80,3 +80,7 @@ docker container logs auditbeat --follow
 Now you can have a look at the Audibeat logs, filter on tags etc...
 
 ![Screenshot command](./assets/01-kibana_auditbeat1.jpg)
+
+
+resources:  
+https://kifarunix.com/install-and-configure-elastic-auditbeat-on-ubuntu-18-04/
