@@ -12,6 +12,8 @@ From your Windows 10 Machine's Winlogbeat Agent -> Logstash (on RabbitMQ server)
 - logstash listens on **TCP 5044**
 - RabbitMQ listens on **TCP 5672**
 
+open powershell and run as ___administrator___:
+
 ```code
 (New-Object System.Net.WebClient).DownloadFile("https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.6.2-windows-x86_64.zip", "C:\temp\winlogbeat-7.6.2-windows-x86_64.zip")
 Expand-Archive C:\temp\winlogbeat-7.6.2-windows-x86_64.zip -DestinationPath "C:\program files\"
