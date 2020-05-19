@@ -41,18 +41,24 @@ Now let's install Sysmon, make sure your powershell or command prompt is elevate
 
 ```code
 cd "C:\Program Files\sysmon"
-./sysmon64.exe -i -n -accepteula -l
+./sysmon64.exe -i -accepteula
 ```
 ![Screenshot command](./assets/01-sysmoninstall.jpg)
 
 The following are command line parameters for sysmon:
 
+Old sysmon parameters:
 >-n : log network connections  
 -i : image loaded  
 -h : create hash [md5,sha256,imphash]   
 -l : loading of modules  
 -c : configfile.xml  
 -u : uninstall  
+
+New sysmon (***v11.0***) parameters:
+> -i : install service and driver  
+-c : configfile.xml  
+-u : uninstall
 
 Once sysmon has been installed you can now open your windows event viewer by clicking on the windows logo in the bottom left corner, and just start typing "event"
 

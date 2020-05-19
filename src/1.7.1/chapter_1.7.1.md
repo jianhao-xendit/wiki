@@ -15,16 +15,12 @@ From your Windows 10 Machine's Winlogbeat Agent -> Logstash (on RabbitMQ server)
 open powershell and run as ___administrator___:
 
 ```code
+mkdir c:\temp
 (New-Object System.Net.WebClient).DownloadFile("https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.6.2-windows-x86_64.zip", "C:\temp\winlogbeat-7.6.2-windows-x86_64.zip")
 Expand-Archive C:\temp\winlogbeat-7.6.2-windows-x86_64.zip -DestinationPath "C:\program files\"
 cd "C:\program files\winlogbeat-7.6.2-windows-x86_64"
 dir
 ```
-
-Now let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6) Logstash instance:
-
-![Screenshot command](./assets/01-winlogbeat_mq.jpg)
-
 now install winlogbeat, use powershell copy the 
 
 ```code
@@ -34,7 +30,13 @@ start-service winlogbeat
 get-service winlogbeat
 ```
 
+Now let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6) Logstash instance:
+
+![Screenshot command](./assets/01-winlogbeat_mq.jpg)  
+
 > You can check the logs in the hidden folder C:\ProgramData\winlogbeat\logs 
+
+![Screenshot command](./assets/hidden.jpg)  
 
 or test the config 
 
