@@ -23,6 +23,23 @@ Now let's make sure the config file is correct, edit the ***winlogbeat.yml*** an
 
 ![Screenshot command](./assets/01-winlogbeat_mq.jpg)
 
+now install winlogbeat, use powershell copy the 
+
+```code
+cp C:\threathunt\labsetup\winlogbeat.yml 'C:\Program Files\winlogbeat-7.6.2-windows-x86_64\'
+.\install-service-winlogbeat.ps1
+start-service winlogbeat
+get-service winlogbeat
+```
+
+> You can check the logs in the hidden folder C:\ProgramData\winlogbeat\logs 
+
+or test the config 
+
+```code
+.\winlogbeat.exe test output -e -d "*"
+```
+
 Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number that was assigned to you in the beginning of the class:
 
 > **NOTE**: The username and password for the Guacamole server are ***"thadmin" / "PROVIDED_PASSWORD"***. For the RDP/SSH connection your username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
