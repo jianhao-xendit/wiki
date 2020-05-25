@@ -9,6 +9,7 @@
     - [  Chapter 1.5.1 - Sysmon](./1.5.1/chapter_1.5.1.md)
     - [  Chapter 1.5.2 - Zeek](./1.5.2/chapter_1.5.2.md)
     - [  Chapter 1.5.3 - Auditd](./1.5.3/chapter_1.5.3.md)
+    - [  Chapter 1.5.4 - GPO's](./1.5.4/chapter_1.5.4.md)
   - [  Chapter 1.6 - ELK](./1.6/chapter_1.6.md)
     - [  Chapter 1.6.1 - Elastic](./1.6.1/chapter_1.6.1.md)
     - [  Chapter 1.6.2 - Logstash](./1.6.2/chapter_1.6.2.md)
