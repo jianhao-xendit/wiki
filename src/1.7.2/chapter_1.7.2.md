@@ -45,3 +45,11 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
   
 https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-geoip.html
 
+add this to config
+
+>packetbeat.protocols:  
+>- type: tls  
+>  send_certificates: true  
+>  include_raw_certificates: false  
+>  include_detailed_fields: true  
+>  fingerprints: [ md5, sha1, sha256 ]  

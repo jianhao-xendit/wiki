@@ -44,6 +44,12 @@ or test the config
 .\winlogbeat.exe test output -e -d "*"
 ```
 
+or 
+
+```code
+.\winlogbeat.exe test config -c .\winlogbeat.yml -e
+```
+
 Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number that was assigned to you in the beginning of the class:
 
 > **NOTE**: The username and password for the Guacamole server are ***"thadmin" / "PROVIDED_PASSWORD"***. For the RDP/SSH connection your username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
@@ -100,3 +106,48 @@ maybe needed for Elastic SIEM:
 ```code
 Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://10.0.0.6:9200/_template/logstash-winlogbeat
 ```
+
+Load Elasticsearch templates   
+----
+If Winlogbeat has a direction connection and is using Elasticearch as the output, it will automatically load the template. However, if you are using Logstash as the output, you need to manually load the Elasticsearch template. See example command to load the Elasticsearch template manually below;
+
+```code
+.\winlogbeat.exe setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["192.168.43.104:9200"]'
+```
+
+Setup Kibana Dashboards
+----
+
+To load Winlogbeat default visualization dashboards, you need to have created the index pattern. Hence, navigate to Kibana and create the Winlogbeat index pattern.  
+
+Next, if you are using Elasticsearch as your output, you can load the dashboards by running the setup command or enabling dashboard loading in the winlogbeat.yml (setup.dashboards.enabled: true) configuration.
+
+```code
+cd C:\'Program Files'\Winlogbeat>
+.\winlogbeat.exe setup --dashboards
+```
+
+Loading dashboards (Kibana must be running and reachable)  
+
+OR
+
+```code
+#============================== Dashboards =====================================
+# These settings control loading the sample dashboards to the Kibana index. Loading
+# the dashboards is disabled by default and can be enabled either by setting the
+# options here or by using the `setup` command.
+#setup.dashboards.enabled: false
+setup.dashboards.enabled: true
+```
+If you are using Logstash as the output, run the command below to load the dashboards. 
+
+```code
+cd C:\'Program Files'\Winlogbeat>  
+.\winlogbeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['10.0.0.5:9200']
+```
+***source: https://kifarunix.com/send-windows-logs-to-elastic-stack-using-winlogbeat-and-sysmon/***
+
+
+
+
+
