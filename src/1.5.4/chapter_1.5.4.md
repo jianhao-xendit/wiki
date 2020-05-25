@@ -1,1 +1,1 @@
-#   Chapter 1.5.4 - GPO's
+#   Chapter 1.5.4 - GPO's (Windows Endpoint)
