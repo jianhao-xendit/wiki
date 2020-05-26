@@ -9,17 +9,17 @@ rabbitmq.`th.crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.
 
 portainer-mq.`th.crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.  
 guacamole.`th.crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.   
-traefik-mq.`crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.
+traefik-mq.`th.crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.
 
 1.1 CREATE DNS RECORDS (EURODNS) for `ELK`
 ====  
-elk.`crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
+elk.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
 
 portainer-elk.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
 kibana.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
 cerebro.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.
 wiki.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
-traefik-elk.`crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.
+traefik-elk.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.
 
 1.3 CREATE DNS RECORDS (EURODNS) for `CODER`
 ====
