@@ -2,12 +2,34 @@
 
 >This chapter explains how to set up your DNS Records to work with the lab environment,
 
-1.1 CREATE DNS RECORDS (EURODNS)
+1.1 CREATE DNS RECORDS (EURODNS) for `RABBITMQ`
+====
+
+rabbitmq.`th.crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.  
+
+portainer-mq.`th.crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.  
+guacamole.`th.crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.   
+traefik-mq.`crimsoncorelabs.be` -> az-mq-lsazure.westeurope.cloudapp.azure.com.
+
+1.1 CREATE DNS RECORDS (EURODNS) for `ELK`
+====  
+elk.`crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
+
+portainer-elk.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
+kibana.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
+cerebro.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.
+wiki.`th.crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.  
+traefik-elk.`crimsoncorelabs.be` -> az-elk-lsazure.westeurope.cloudapp.azure.com.
+
+1.3 CREATE DNS RECORDS (EURODNS) for `CODER`
 ====
 coder.crimsoncorelabs.be -> az-jump-lsazure.westeurope.cloudapp.azure.com.  
-traefik.rimsoncorelabs.be -> az-jump-lsazure.westeurope.cloudapp.azure.com.  
+traefik.crimsoncorelabs.be -> az-jump-lsazure.westeurope.cloudapp.azure.com.  
 portainer.crimsoncorelabs.be -> az-jump-lsazure.westeurope.cloudapp.azure.com.  
 jupyter.crimsoncorelabs.be -> az-jump-lsazure.westeurope.cloudapp.azure.com.  
+
+Additional changes to your `JUMP (CODER) host`
+====
 
 remove az-jump-lsazure.westeurope.cloudapp.azure.com from ./ssh/known_hosts
 
