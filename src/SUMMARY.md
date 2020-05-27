@@ -19,6 +19,7 @@
     - [  Chapter 1.7.1 - Winlogbeat](./1.7.1/chapter_1.7.1.md)
     - [  Chapter 1.7.2 - Packetbeat](./1.7.2/chapter_1.7.2.md)
     - [  Chapter 1.7.3 - Auditbeat](./1.7.3/chapter_1.7.3.md)
+    - [  Chapter 1.7.4 - Azure Cloud](./1.7.4/chapter_1.7.4.md)
   - [  Chapter 1.8 - Enrichment](./1.8/chapter_1.8.md)
   - [  Chapter 1.9 - Alerting](./1.9/chapter_1.9.md)
     - [  Chapter 1.9.1 - ElastAlert](./1.9.1/chapter_1.9.1.md)
