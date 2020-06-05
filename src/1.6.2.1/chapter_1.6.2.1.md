@@ -72,3 +72,5 @@ output.logstash:
 
 THIS IS THE WAY: https://github.com/Busindre/How-to-configure-SSL-for-FileBeat-and-Logstash-step-by-step
 
+https://burnhamforensics.com/2019/02/25/elk-beats-securing-communication-with-logstash-by-using-ssl/
+
