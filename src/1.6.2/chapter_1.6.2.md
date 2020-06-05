@@ -35,8 +35,8 @@ Student Kali Linux machines with ELK (***logstash***) --pull-from--> `central Ra
 
 So this means your client machines will be forwarding their logs to a central Logstash server (managed and configure by the instructors), so you will not be forwarding your logs to your __own__ logstash. You logstash ***INPUT*** will fetch all the students logs from the RabbitMQ server. 
 
-> IMPORTANT :  
-> Change the __password__ in the config file below with the ***PROVIDED_PASSWORD***
+> __IMPORTANT__ :  
+> Change the __password__ in the config file below with the ***PROVIDED_PASSWORD***  
 > Change the __queue__ to your student number : for example RabbitQueue_StudentXX -> ***RabbitQueue_Student02***
 
 ```yml

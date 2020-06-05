@@ -1,60 +1,68 @@
 #   Chapter 1.6.3 - Kibana
-Clickable links in Kibana
+
+INSTALL
 ====
 
-In your Kibana:  
-Make a new query for the field you want to make into a drill-down hyperlink, in this example we are going to make the country name field into a clickable link.  
-
-![Screenshot command](./assets/01-kibana-query.jpg)
-
-From your browser search bar you can now copy the URL, it will look something like this:
-
+After getting our Elastic cluster up and running w're now going to get Kibana (Our GUI) up and running>
 
 ```code
-http://kibana-az-elk-lsazure.westeurope.cloudapp.azure.com/app/kibana#/discover?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(_source),index:'2c0e1ca0-68f5-11ea-84ab-f5c320c83779',interval:auto,query:(language:kuery,query:'ENRICH_destination_geo.country_name%20:%20*'),sort:!(!('@timestamp',desc)))
+cd /opt/threathunt/docker-compose
+cat docker-compose.kibana.yml
 ```
-Copy this search query and change the ***"asterisk"*** with `{{value}}`: Your query should look like this:
+
+You can have a look at the docker-compose file:
+
+```yaml 
+version: '3'
+services:
+  kibana:
+    image: 'docker.elastic.co/kibana/kibana:7.6.2'
+    container_name: kibana
+    restart: unless-stopped
+    volumes:
+      - /opt/threathunt/kibana/config/:/usr/share/kibana/config/
+    ports:
+      - '5601:5601'
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge
+```
+
+The Kibana configuration file (kibana.yml) is found under ***/opt/threathunt/kibana/config*** and points to your ***ES01*** node.  
 
 ```code
-http://kibana-az-elk-lsazure.westeurope.cloudapp.azure.com/app/kibana#/discover?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(_source),index:'2c0e1ca0-68f5-11ea-84ab-f5c320c83779',interval:auto,query:(language:kuery,query:'ENRICH_destination_geo.country_name%20:%20{{value}}'),sort:!(!('@timestamp',desc)))  
+.  
+├── config  
+│   └── kibana.yml
+└── dashboards 
+    ├── export.ndjson  
+    └── kibana_az_elk_export.ndjson  
 ```
 
-In your Kibana:
+```yaml
+server.name: kibana
+server.host: "0"
+elasticsearch.hosts: [ "http://es01:9200" ]
+```
 
-1. Click on ***"Management"***, the little cogs in the left bottom corner,
-2. then click on ***"Index Patterns"***,
-3. and finally click on ***"logstash-windows"***
-
-![Screenshot command](./assets/01-kibanaindex.jpg)
-
-
-
-Look for the `ENRICH_destination_geo.country_name` field and click on edit (the little pencil on the right).
-
-![Screenshot command](./assets/01-kibana-url01.jpg)
-
-1. Click on ***"Format"***, and select `Url`,
-2. then click on ***"Type"***, select `Link`,
-3. in the ***"URL Template"*** paste your adapted link in this field, it has the `{{value}} filed instead of the ***"asterisk"***
+To install the Kibana just run the following command:
 
 ```code
-http://kibana-az-elk-lsazure.westeurope.cloudapp.azure.com/app/kibana#/discover?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(_source),index:'2c0e1ca0-68f5-11ea-84ab-f5c320c83779',interval:auto,query:(language:kuery,query:'ENRICH_destination_geo.country_name%20:%20{{value}}'),sort:!(!('@timestamp',desc)))  
+cd /opt/threathunt/docker-compose
+sudo docker-compose -f docker-compose.kibana.yml up -d
 ```
-4. in the ***"Label Template"*** enter a short name, for example : `Country: {{value}}`
 
-![Screenshot command](./assets/01-kibana-url02.jpg)
+This will create a Kibana docker container, called ***Kibana***. You can go to your [portainer](http://localhost:9000) and check the Kibana.
 
-5. Click ***"save"***  
-   
-Let's launch our query again:  
+![Screenshot command](./assets/04-KibanaUp.jpg)
 
-1. go back to ***"Discover"***, the little compass in the upper left corner.
-2. enter your search query `ENRICH_destination_geo.country_name : *`
-3. open one of the events
-4. you will now see the country is clickable
+If all has gone well you can now use your browser and point it at http://localhost:5601.  
 
-![Screenshot command](./assets/01-kibana-clickable.jpg)
+- Click on "***Explore on my own***"
+- Then click on "***discover***" on the upper left corner.
 
-Clicking on this link will launch a query in a new tab for that specific country - as seens below.
+![Screenshot command](./assets/04-KibanaGUI.jpg)
 
-![Screenshot command](./assets/01-kibana-result.jpg)
+There is no data in visible in Kibana yet, which is logical as we still need to ship logs first and have our Logstash node push those logs into our Elastic Index.
