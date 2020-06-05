@@ -5,7 +5,7 @@ _"With a GUI based tool like **Portainer CE**, you can leave the complex CLI com
 
 ![Screenshot command](./assets/01-portainerlogo.png)
 
-***Source: https://www.portainer.io/installation/***
+- SOURCE : ***[https://www.portainer.io/installation/](https://www.portainer.io/installation/)***
 
 On your kali linux machine open a terminal. Use SSH and login with your kali username and password (***kali/kali***). 
 
@@ -22,9 +22,16 @@ cd /opt/threathunt/docker-compose
 sudo docker-compose -f docker-compose.portainer.yml pull 
 sudo docker-compose -f docker-compose.portainer.yml up -d
 ```
-***Source: /opt/threathunt/docker-compose/docker-compose.portainer.yml***
+- -f : allows you to specify the filename of yor docker compose file (default is ***docker-compose.yml***)
+- pull : means it will fetch the latest portainer image from dockerhub (in this case)
+- -d : runs the command in daemon mode
+
+```code
+sudo nano /opt/threathunt/docker-compose/docker-compose.portainer.yml
+```
+
 ```yml
-version: '2'
+version: '3'
 services:
   portainer:
     image: portainer/portainer
@@ -59,3 +66,10 @@ docker run -d --name portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/doc
 - **-p :** expose networks ports in the container - outside_host/inside_container
 - **-v :** map a directory from the host to directory inside the container - outside_host/inside_container
   
+On your kali linux you can now open CHrome and browse to http://localhost:9000
+
+![Screenshot command](./assets/02-portainergui.jpg)
+
+For this training we will be using Portainer as a simple GUI tool to manage our docker containers. You can of course also do this from the command line interface.
+
+![Screenshot command](./assets/02-portainergui2.jpg)

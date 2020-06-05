@@ -8,7 +8,8 @@ _"Sigma is a generic and open signature format that allows you to describe relev
 
 Installing Sigma
 ====
-***source: https://github.com/Neo23x0/sigma***
+
+- SOURCE : ***[https://github.com/Neo23x0/sigma](https://github.com/Neo23x0/sigma)*** 
 
 Login to your `kali linux machine` with SSH and login with your kali username and password 
 
@@ -32,7 +33,7 @@ Then we'll clone the sigma rules from the ***crimsoncore/sigma.git*** repository
 
 ```code
 cd /opt
-git clone https://github.com/crimsoncore/sigma.git
+sudo git clone https://github.com/crimsoncore/sigma.git
 ``` 
 ![Screenshot command](./assets/02-sigmaclone.jpg)
 
