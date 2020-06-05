@@ -9,8 +9,16 @@ The pipeline looks like this:
 
 From your Windows 10 Machine's Winlogbeat Agent -> Logstash (on RabbitMQ server) -> RabbitMQ (on RabbitMQ server). Later on we will configure the student ELK servers to pull the logs from their queue.
 
-- logstash listens on **TCP 5044**
-- RabbitMQ listens on **TCP 5672**
+- logstash listens on **TCP 5044** on 10.0.0.6
+- RabbitMQ listens on **TCP 5672** on 10.0.0.6
+
+1. DOWNLOAD winlogbeat
+---
+
+Let's start by opening powershell open your Windows 10 machine by clicking on the windows logo in the bottom left corner, and just start typing "power":
+
+![Screenshot command](./assets/04-powershell.jpg)
+
 
 open powershell and run as ___administrator___:
 
@@ -21,7 +29,35 @@ Expand-Archive C:\temp\winlogbeat-7.6.2-windows-x86_64.zip -DestinationPath "C:\
 cd "C:\program files\winlogbeat-7.6.2-windows-x86_64"
 dir
 ```
-now install winlogbeat, use powershell copy the 
+
+2. VERIFY the winlogbeat configuration   
+----
+
+We already provided are preconfigured winlogbeat.yml file, located under "C:\threathunt\labsetup\", copy that file to "C:\program files\winlogbeat-7.6.2-windows-x86_64" and verify that the configuration is pointing to the central Logstash/RabbitMQ:
+
+```code
+cp 'C:\threathunt\labsetup\winlogbeat.yml' 'C:\Program Files\winlogbeat-7.6.2-windows-x86_64\'
+```
+
+use notepad++ to edit the winlogbeat.yml file, and let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6:5044) Logstash instance:
+
+![Screenshot command](./assets/01-winlogbeat_mq.jpg)  
+
+3. LOAD Elasticsearch templates   
+----
+
+If Winlogbeat has a direct connection and is using Elasticearch as the output, it will automatically load the template. However, if you are using Logstash as the output, you need to manually load the Elasticsearch template. See example command to load the Elasticsearch template manually below:
+
+Before installing and starting the agent - we need to make sure that ***Elastic SIEM*** has the right mappings for the index.
+
+```code
+.\winlogbeat.exe setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["yourkalimachine:9200"]'
+```
+
+4. INSTALL winlogbeat  
+----
+
+Finally install winlogbeat, use powershell copy the following command.
 
 ```code
 cp C:\threathunt\labsetup\winlogbeat.yml 'C:\Program Files\winlogbeat-7.6.2-windows-x86_64\'
@@ -29,10 +65,6 @@ cp C:\threathunt\labsetup\winlogbeat.yml 'C:\Program Files\winlogbeat-7.6.2-wind
 start-service winlogbeat
 get-service winlogbeat
 ```
-
-Now let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6) Logstash instance:
-
-![Screenshot command](./assets/01-winlogbeat_mq.jpg)  
 
 > You can check the logs in the hidden folder C:\ProgramData\winlogbeat\logs 
 
@@ -50,72 +82,7 @@ or
 .\winlogbeat.exe test config -c .\winlogbeat.yml -e
 ```
 
-Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number that was assigned to you in the beginning of the class:
-
-> **NOTE**: The username and password for the Guacamole server are ***"thadmin" / "PROVIDED_PASSWORD"***. For the RDP/SSH connection your username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
-
-**Guacamole Username: thadmin**  
-**Guacamole Password : PROVIDED_PASSWORD**
-
-![Screenshot command](./assets/02-guacamole.jpg)
-
-Let's start by opening powershell open your Windows 10 machine by clicking on the windows logo in the bottom left corner, and just start typing "power":
-
-![Screenshot command](./assets/04-powershell.jpg)
-
-Open your web browser (preferably chrome) and surf to http://kibana-az-elk-`lsazure`.westeurope.cloudapp.azure.com/
-
-You will be prompted to authenticate:
-
-**Username:**
-```code
-test
-```
-**Password:**
-```code
-test
-```
-In Kibana:
-
-1. Click on ***"Management"***, the little cogs in the left bottom corner,
-2. then click on ***"Index Patterns"***,
-3. and finally click on ***"Create index pattern"***
-
-![Screenshot command](./assets/03-kibanaindex.jpg)
-
-1. Enter the index name "logstash-windows*"
-2. Click "Next Step"
-
-![Screenshot command](./assets/03-kibanadefine.jpg)
-
-1. Select the "time filter field" and select "@timestamp"
-2. Click on "Create index pattern"
-
-![Screenshot command](./assets/03-kibanatime.jpg)
-
-You have now created your Elastic index, and you will see a screen similar to this:
-
-![Screenshot command](./assets/03-kibanacreated.jpg)
-
-TROUBLESHOOTING WINLOGBEAT CONFIG FILES
-====
-.\winlogbeat.exe test output -e -d "*"  
-
-maybe needed for Elastic SIEM:  
-
-```code
-Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://10.0.0.6:9200/_template/logstash-winlogbeat
-```
-
-Load Elasticsearch templates   
-----
-If Winlogbeat has a direction connection and is using Elasticearch as the output, it will automatically load the template. However, if you are using Logstash as the output, you need to manually load the Elasticsearch template. See example command to load the Elasticsearch template manually below;
-
-```code
-.\winlogbeat.exe setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["192.168.43.104:9200"]'
-```
-
-Setup Kibana Dashboards
+5. SETUP Kibana Dashboards
 ----
 
 To load Winlogbeat default visualization dashboards, you need to have created the index pattern. Hence, navigate to Kibana and create the Winlogbeat index pattern.  
@@ -139,13 +106,80 @@ OR
 #setup.dashboards.enabled: false
 setup.dashboards.enabled: true
 ```
-If you are using Logstash as the output, run the command below to load the dashboards. 
+If you are using __Logstash__ as the output, run the command below to load the dashboards. 
 
 ```code
 cd C:\'Program Files'\Winlogbeat>  
-.\winlogbeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['10.0.0.5:9200']
+.\winlogbeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['yourkalimachine:9200']
 ```
 ***source: https://kifarunix.com/send-windows-logs-to-elastic-stack-using-winlogbeat-and-sysmon/***
+
+CREATING your index
+----
+
+If all has gone well, we're now sending windows logs to the central Logstash server, which forwards these logs to all the student queues. Each student is now pulling logs with their own ELK (Kali Linux server) from his/her queue as defined before in the logstash configuration (remember RabbitQueue_StudentXX). 
+
+So let's go into our Kibana interface again and configure the index and have a look at the data lake and ***ELASTIC SIEM***.
+
+Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number that was assigned to you in the beginning of the class:
+
+> **NOTE**: The username and password for the Guacamole server are ***"thadmin" / "PROVIDED_PASSWORD"***. For the RDP/SSH connection your username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
+
+**Guacamole Username: thadmin**  
+**Guacamole Password : PROVIDED_PASSWORD**
+
+![Screenshot command](./assets/02-guacamole.jpg)
+
+Open your web browser (preferably chrome) and surf to http://kibana-az-elk-`lsazure`.westeurope.cloudapp.azure.com/
+
+You will be prompted to authenticate:
+
+**Username:**
+```code
+test
+```
+**Password:**
+```code
+test
+```
+In Kibana:
+
+1. Click on ***"Management"***, the little cogs in the left bottom corner,
+2. then click on ***"Index Patterns"***,
+3. and finally click on ***"Create index pattern"***
+
+![Screenshot command](./assets/03-kibanaindex.jpg)
+
+1. Enter the index name "winlogbeat-*"
+2. Click "Next Step"
+
+![Screenshot command](./assets/03-kibanadefine.jpg)
+
+1. Select the "time filter field" and select "@timestamp"
+2. Click on "Create index pattern"
+
+![Screenshot command](./assets/03-kibanatime.jpg)
+
+You have now created your Elastic index, and you will see a screen similar to this:
+
+![Screenshot command](./assets/03-kibanacreated.jpg)
+
+TROUBLESHOOTING WINLOGBEAT CONFIG FILES
+====
+.\winlogbeat.exe test output -e -d "*"  
+
+maybe needed for Elastic SIEM:  
+
+```code
+Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://10.0.0.6:9200/_template/logstash-winlogbeat
+```
+
+```
+.\winlogbeat.exe export template --es.version 7.6.2 | Out-File -Encoding UTF8 winlogbeat.template.json
+Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://192.168.100.199:9200/_template/winlogbeat-7.6.2
+```
+
+
 
 
 

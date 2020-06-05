@@ -61,7 +61,7 @@ input {
 FILTERS
 ====
 
-
+For now we're not going to put any filters, we will do this later on when we start enriching our logs.
 
 
 OUTPUTS
@@ -75,13 +75,57 @@ output {
     elasticsearch {
       hosts => "es01:9200"
       index => "%{[@metadata][beat]}-%{[@metadata][version]}"
-      #index => "winlogbeat-%{+YYYY.MM.dd}"
     }
   }
 }
 ```
 
+INSTALL
+====
 
+We're going to install Logstash running in a docker container:
 
+```code
+cd /opt/threathunt/docker-compose
+cat docker-compose.logstash.yml
+```
 
+You can have a look at the docker-compose file:
 
+```yml
+version: '3'
+services:
+  logstash:
+    image: crimsoncorelabs/logstashrest
+    container_name: logstash_rest
+    ports:
+     - 5044:5044
+     - 5045:5045
+     - 5046:5046
+    restart: unless-stopped
+    volumes:
+    - /opt/threathunt/logstash/pipeline/:/usr/share/logstash/pipeline/
+    - /opt/threathunt/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    - /opt/threathunt/logstash/patterns:/usr/share/logstash/patterns
+    - /opt/threathunt/logstash/pki/:/usr/share/logstash/pki
+    networks:
+      - elastic
+networks:
+  elastic:
+    driver: bridge
+```
+
+To install the Logstash just run the following command:
+
+```code
+cd /opt/threathunt/docker-compose
+sudo docker-compose -f docker-compose.logstash.yml up -d
+```
+
+This will create a logstash node in docker, called ***logstash_rest***. You can go to your [portainer](http://localhost:9000) and check the container.
+
+![Screenshot command](./assets/01-LogstashUp.jpg)
+
+Click on the little "log" icon to the right of the green "running" label - this will show you if logstash is propely running.
+
+![Screenshot command](./assets/01-LogstashLogs.jpg)
