@@ -12,7 +12,8 @@ On your kali linux machine open a terminal. Use SSH and login with your kali use
 > NOTE: If /opt/threathunt is not present, you might have to clone this manually. Normally in this training the machines should be provisioned with the necessary git repos and you can do a pull for the laytest updates. You can do a do a full clone like this:
 
 ```code
-git clone https://github.com/crimsoncore/threathunt.git
+cd /opt
+git clone https://github.com/crimsoncore/threathunt_student.git /opt/threathunt
 ```
 
 In the ***/opt/threathunt/docker-compose*** directory you will find a docker-compose file to download an build portainer:

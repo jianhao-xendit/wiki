@@ -1,4 +1,4 @@
-# Chapter 2.4 - Kerberoasting 
+# Chapter 2.4 - Kerberoasting (silver Ticket)
 ----
 Mitre: T1208
 --
@@ -19,6 +19,6 @@ __["Kerberoasting Revisited"](https://www.youtube.com/watch?v=yrMGRhyoyGs)__ (by
 
 __["Abusing Microsoft Kerberos: Sorry You Guys Don't Get It"](https://www.youtube.com/watch?v=lJQn06QLwEw&t=9s)__ (by Benjamin Delpy - mimikatz guy) - **BlackHat USA 2014** 
 
- 
+__["Attack Tutorial: Kerberos Silver Ticket"](https://www.youtube.com/watch?v=GTJyd-AMfuM)__ (by StealthBits) 
 
 

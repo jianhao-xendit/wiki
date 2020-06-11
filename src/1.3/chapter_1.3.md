@@ -8,13 +8,13 @@ On your kali linux machine open a terminal. Use SSH and login with your kali use
 ***Source: https://github.com/rust-lang/mdBook***
 
 ```code
- ssh kali@yourkalimachine
+ssh kali@yourkalimachine
 ``` 
 
- ```code
- cd /opt
- sudo git clone https://github.com/crimsoncore/wiki.git
- sudo git clone https://github.com/crimsoncore/threathunt.git
+```code
+cd /opt
+sudo git clone https://github.com/crimsoncore/wiki.git
+git clone https://github.com/crimsoncore/threathunt_student.git threathunt
 ```
 You should see the following structure for the MarkDown files:
 

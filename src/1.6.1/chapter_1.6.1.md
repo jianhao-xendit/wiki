@@ -10,9 +10,9 @@
 On your `Kali linux machine` do the following
 
 ```code
-sudo nano /etc/sysctl.conf
-vm.max_map_count=262144
-Reboot
+sudo bash -c 'echo "vm.max_map_count=262144" >> /etc/sysctl.conf'
+sudo sysctl -p
+sysctl vm.max_map_count
 ```
 INSTALL
 ====

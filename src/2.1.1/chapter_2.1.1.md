@@ -7,10 +7,13 @@ _"BloodHound uses graph theory to reveal the hidden and often unintended relatio
 
 ![Screenshot Github](./assets/01-bloodhound.png)
 
-Installing Bloodhound
+>**BloodHound** has 2 elements : the GraphDB - GUI for querying and displaying the data, and the collector (**SharpHound**), the latter will collect all the AD information from the domain with standard user rights (no privs required).
+
+Installing BloodHound
 ===
 
 - SOURCE : ***[https://github.com/BloodHoundAD/BloodHound](https://github.com/BloodHoundAD/BloodHound)*** 
+- DOCUMENTATION : ***[ReadTheDocs BloodHound](https://bloodhound.readthedocs.io/en/latest/index.html)***
 
 On your kali linux machine
 
