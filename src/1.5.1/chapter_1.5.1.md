@@ -47,7 +47,7 @@ cd "C:\Program Files\sysmon"
 
 The following are command line parameters for sysmon:
 
-Old sysmon parameters:
+Old sysmon parameters:  
 >-n : log network connections  
 -i : image loaded  
 -h : create hash [md5,sha256,imphash]   
@@ -55,7 +55,7 @@ Old sysmon parameters:
 -c : configfile.xml  
 -u : uninstall  
 
-New sysmon (***v11.0***) parameters:
+New sysmon (***v11.0***) parameters - we are running this version in the lab:  
 > -i : install service and driver  
 -c : configfile.xml  
 -u : uninstall
@@ -71,3 +71,14 @@ Once sysmon has been installed you can now open your windows event viewer by cli
  If you pay close attention you will see that by default sysmon is not logging everything, that is because we didn't pass a configuration file when we installed sysmon
 
  ![Screenshot command](./assets/03-sysmonevents.jpg)
+
+Let's update sysmon with a config file that perfoms more detailed logging (open powershell as Administrator):
+
+```code
+cp C:\threathunt\labsetup\sysmon.xml 'C:\Program Files\sysmon\'
+cd C:\Program Files\sysmon\
+./sysmon64.exe -c .\sysmon.xml
+```
+You can have a look at the sysmon.xml with by using notepad++, during the class we'll go through the configuration more in depth.
+
+![Screenshot command](./assets/01-sysmonconfig.jpg)
