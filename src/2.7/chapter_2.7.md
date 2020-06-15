@@ -40,30 +40,9 @@ detection:
         ParentImage:
             - '*\WINWORD.EXE'
             - '*\EXCEL.EXE'
-            - '*\POWERPNT.exe'
-            - '*\MSPUB.exe'
-            - '*\VISIO.exe'
-            - '*\OUTLOOK.EXE'
         Image:
             - '*\cmd.exe'
             - '*\powershell.exe'
-            - '*\wscript.exe'
-            - '*\cscript.exe'
-            - '*\sh.exe'
-            - '*\bash.exe'
-            - '*\scrcons.exe'
-            - '*\schtasks.exe'
-            - '*\regsvr32.exe'
-            - '*\hh.exe'
-            - '*\wmic.exe'  # https://app.any.run/tasks/c903e9c8-0350-440c-8688-3881b556b8e0/
-            - '*\mshta.exe'
-            - '*\rundll32.exe'
-            - '*\msiexec.exe'
-            - '*\forfiles.exe'
-            - '*\scriptrunner.exe'
-            - '*\mftrace.exe'
-            - '*\AppVLP.exe'
-            - '*\svchost.exe'  # https://www.vmray.com/analyses/2d2fa29185ad/report/overview.html
     condition: selection
 fields:
     - CommandLine
@@ -76,10 +55,10 @@ level: high
 Sigma query:
 
 ```code
-sigmac -Okeyword_blacklist=* -t es-qs -c /opt/sigma/tools/config/winlogbeat.yml /opt/threathunt/sigma_rules/win_crimsoncore_officespawn.yaml
+sigmac -Okeyword_blacklist=* -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/threathunt/sigma_rules/win_crimsoncore_officespawn.yaml
 ```
 
 Kibana Query:
-```yaml
-
+```code
+(process.parent.executable:("*\\EXCEL.EXE") AND process.executable:("*\\cmd.exe"))
 ```
