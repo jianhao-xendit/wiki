@@ -98,53 +98,19 @@ realert:
   minutes: 0
 type: any
 
-alert_text: "{2} Endpoint: {0} CommandLine: {1} Link: {3}"
+alert_text: "Username: {2} --- Endpoint: {0} --- CommandLine: {1} --- Time: {3}"
 alert_text_type: alert_text_only
 alert_text_args:
 - host.name
-- winlog.event_data.CommandLine
+- process.args
+- user.name
 - "@timestamp"
-- kibana_link
+#- kibana_link
 
 #<a href='{3}'>Kibana link</a>
 
 alert:
 - "slack"
 slack:
-slack_webhook_url: "https://hooks.slack.com/services/pasteyourhookhere"
-```
-
-OLD ONE:  
-
-
-```yml
-#alert:
-#- debug
-description: Detects recon using net.exe commands
-filter:
-- query:
-    query_string:
-      query: (winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1"
-        AND winlog.event_data.OriginalFileName:("*net1.exe" "*net.exe"))
-index: logstash-*
-name: Net-commands_0
-priority: 2
-realert:
-  minutes: 0
-type: any
-
-alert_text: "{2} Endpoint: {0} CommandLine: {1} Link: {3}"
-alert_text_type: alert_text_only
-alert_text_args:
-- host.name
-- winlog.event_data.CommandLine
-- "@timestamp"
-- kibana_link
-
-#<a href='{3}'>Kibana link</a>
-
-alert:
-- "slack"
-slack:
-slack_webhook_url: "https://hooks.slack.com/services/pasteyourhookhere"
+slack_webhook_url: "https://hooks.slack.com/services/KEYWILLBEPROVIDED"
 ```
