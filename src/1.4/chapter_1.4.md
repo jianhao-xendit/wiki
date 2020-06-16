@@ -91,8 +91,10 @@ level: high
 ```
 
 ```code 
-sigmac -Okeyword_blacklist=* -t es-qs -c /opt/sigma/tools/config/winlogbeat.yml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
+sigmac -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
 ```
 
+> !!! You will have to remove the escape "\" and .keyword from the query 
+
 result query:  
->(winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1" AND winlog.event_data.OriginalFileName:(*net.exe *net1.exe))
+>(winlog.channel : "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:"1" AND process.executable:(*net.exe OR *net1.exe))

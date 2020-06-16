@@ -152,5 +152,141 @@ or we can hunt on tags:
 winlog.event_id : 22 AND tags : DGA
 ```
 
+> ***NOTE:***You can also save tgis queries and use them later on to build visualisations and dashboards!!!
+
 ![Screenshot command](./assets/03-kibana_hunt.jpg)
 
+3.0 ADD Network and GEO Location metadata
+===
+
+copy __320_enrich_sourcedest_ip.conf__ to your pipeline, this adds source and destination IP fields, if they exist. We will use these later to define if they are internal/external, and if external - add GEO IP location info.
+
+```yaml
+filter {
+  if [source][ip] and [source][ip] != "-" {
+    mutate {
+      add_field => { "[ENRICH_Source_IP]" => "%{[source][ip]}"}
+    }
+  }
+  if [destination][ip] and [destination][ip] != "-" {
+    mutate {
+      add_field => { "[ENRICH_Destination_IP]" => "%{[destination][ip]}"}
+    }
+  }
+}
+```
+
+Don't forget to restart Logstash:
+
+```code
+sudo docker restart logstash_rest
+sudo docker container logs logstash_rest --follow
+```
+
+Check your Kibana Discover page and __refresh your index__ so the new fields are searchable.
+
+![Screenshot command](./assets/04-sourcedest.jpg)
+
+next copy __380_enrich_network.conf__ to your pipeline, this will add tags (broadcast, internal, external etc...)
+
+```yaml
+filter {
+  if [ENRICH_Destination_IP] =~ "2(?:2[4-9]|3\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d?|0)){3}" {
+    mutate {
+      add_tag => [ "multicast" ]
+    }
+  }
+  if [ENRICH_Destination_IP] == "255.255.255.255" {
+    mutate {
+      add_tag => [ "broadcast" ]
+    }
+  }
+  if [ENRICH_Destination_IP] and "multicast" not in [tags] and "broadcast" not in [tags] {
+    if [ENRICH_Destination_IP] =~ "^10\." or [ENRICH_Destination_IP] =~ "192\.168\." or [ENRICH_Destination_IP] =~ "172\.(1[6-9]|2[0-9]|3[0-1])\." {
+      mutate {
+        add_tag => [ "internal_destination" ]
+      }
+    } else {
+      mutate {
+        add_tag => [ "external_destination" ]
+      }
+    }
+    if "internal_destination" not in [tags] {
+      if [ENRICH_Destination_IP] == "198.41.0.4" or [ENRICH_Destination_IP] == "192.228.79.201" or [ENRICH_Destination_IP] == "192.33.4.12" or [ENRICH_Destination_IP] == "199.7.91.13" or [ENRICH_Destination_IP] == "192.203.230.10" or [ENRICH_Destination_IP] == "192.5.5.241" or [ENRICH_Destination_IP] == "192.112.36.4" or [ENRICH_Destination_IP] == "198.97.190.53" or [ENRICH_Destination_IP] == "192.36.148.17" or [ENRICH_Destination_IP] == "192.58.128.30" or [ENRICH_Destination_IP] == "193.0.14.129" or [ENRICH_Destination_IP] == "199.7.83.42" or [ENRICH_Destination_IP] == "202.12.27.33" {
+        mutate {
+          add_tag => [ "root_dns_server" ]
+        }
+      }
+    }
+  }
+  if [ENRICH_Source_IP] {
+    if [ENRICH_Source_IP] =~ "^10\." or [ENRICH_Source_IP] =~ "192\.168\." or [ENRICH_Source_IP] =~ "172\.(1[6-9]|2[0-9]|3[0-1])\." {
+      mutate {
+        add_tag => [ "internal_source" ]
+      }
+    } else {
+      mutate {
+        add_tag => [ "external_source" ]
+      }
+    }
+    if "internal_source" not in [tags] {
+      if [ENRICH_Source_IP] == "198.41.0.4" or [ENRICH_Source_IP] == "192.228.79.201" or [ENRICH_Source_IP] == "192.33.4.12" or [ENRICH_Source_IP] == "199.7.91.13" or [ENRICH_Source_IP] == "192.203.230.10" or [ENRICH_Source_IP] == "192.5.5.241" or [ENRICH_Source_IP] == "192.112.36.4" or [ENRICH_Source_IP] == "198.97.190.53" or [ENRICH_Source_IP] == "192.36.148.17" or [ENRICH_Source_IP] == "192.58.128.30" or [ENRICH_Source_IP] == "193.0.14.129" or [ENRICH_Source_IP] == "199.7.83.42" or [ENRICH_Source_IP] == "202.12.27.33" {
+        mutate {
+          add_tag => [ "root_dns_server" ]
+        }
+      }
+    }
+    if "internal_source" in [tags] and "internal_destination" in [tags] {
+      mutate { add_tag => [ "internal_only" ] }
+    }
+  }
+}
+```
+
+Don't forget to restart Logstash:
+
+```code
+sudo docker restart logstash_rest
+sudo docker container logs logstash_rest --follow
+```
+
+Check your Kibana Discover page again and __refresh your index__ so the new fields are searchable. You'll see that all network connections (Sysmon event ID 3) get tagged with internal/external tags. You can use these to search combined with other fields.
+
+
+![Screenshot command](./assets/04-tags.jpg)
+
+Finally for the external destinations, let's do a GEO Location lookup:
+
+```yaml
+filter {
+  if [ENRICH_Destination_IP] {
+    if [ENRICH_Destination_IP] == "-" {
+      mutate {
+        replace => { "ENRICH_Destination_IP" => "0.0.0.0" }
+      }
+    }
+    if "external_destination" in [tags] {
+      geoip {
+        source => "[ENRICH_Destination_IP]"
+        target => "ENRICH_destination_geo"
+      }
+      geoip {
+        default_database_type => "ASN"
+        source => "[ENRICH_Destination_IP]"
+        target => "ENRICH_destination_geo"
+      }
+    }
+  }
+}
+```
+
+Don't forget to restart Logstash:
+
+```code
+sudo docker restart logstash_rest
+sudo docker container logs logstash_rest --follow
+```
+
+Check your Kibana Discover page again and __refresh your index__ so the new fields are searchable. You'll see that GEO location has been added to all public (externally tagged) destinations:
+
+![Screenshot command](./assets/04-geo.jpg)

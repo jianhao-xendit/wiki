@@ -26,7 +26,7 @@
     - [  Chapter 1.8.3 - Kibana Views](./1.8.3/chapter_1.8.3.md)
   - [  Chapter 1.9 - Alerting](./1.9/chapter_1.9.md)
     - [  Chapter 1.9.1 - ElastAlert](./1.9.1/chapter_1.9.1.md)
-    - [  Chapter 1.9.1 - Slack](./1.9.2/chapter_1.9.2.md)
+    - [  Chapter 1.9.2 - Slack](./1.9.2/chapter_1.9.2.md)
 
 - [**CHAPTER 2 - Labs** ](./2/chapter_2.md)
   - [Chapter 2.1 - Recon ](./2.1/chapter_2.1.md) 
