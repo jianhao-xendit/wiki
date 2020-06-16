@@ -24,7 +24,7 @@ In your Kibana:
 
 1. Click on ***"Management"***, the little cogs in the left bottom corner,
 2. then click on ***"Index Patterns"***,
-3. and finally click on ***"logstash-windows"***
+3. and finally click on ***"Winlogbeat-*"***
 
 ![Screenshot command](./assets/01-kibanaindex.jpg)
 
