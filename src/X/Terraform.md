@@ -24,6 +24,12 @@ az vm image terms accept --urn kali-linux:kali-linux:kali:2019.2.0
 ```
 ![Screenshot command](./assets/01-EULA.jpg)
 
+to list the available Kali versions:
+
+```code
+az vm image list -f "kali" --all
+```
+
 ```code
 terraform init
 terraform plan

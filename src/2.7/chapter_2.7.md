@@ -1,16 +1,23 @@
 # Chapter 2.7 - Process Spawning 
 >This chapter explains how to create malicious Office Macros on your `Windows 10 machine`
 
-- SOURCE : ***[EvileOffice](https://github.com/thelinuxchoice/eviloffice)*** 
-
 ===
 
 Let's start by opening powershell open your Windows 10 machine by clicking on the windows logo in the bottom left corner, and just start typing "power":
 
 ![Screenshot command](./assets/04-powershell.jpg)
 
-
 open powershell and run as ___administrator___:
+
+1. SETUP the attack - create malicious macro and payload
+===
+In your labs folder you will find an excel sheet and a metasploit resouces script that will be hosting the payload (a meterpreter reversr HTTP shell)
+
+2. EXECUTE the attack
+===
+
+3. BUILD a detection with sigma
+===
 
 
 ![Screenshot command](./assets/01-excelspawnkibana.jpg)
