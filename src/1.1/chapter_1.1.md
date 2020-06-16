@@ -95,6 +95,7 @@ Docker Cheat Sheet
 ====
 docker image ls -a  
 docker system prune -a  
+docker container logs "containername" --follow
 
 BUILDING LOCAL IMAGES WITH DOCKER (`NOT LAB RELATED`)
 ====
