@@ -121,3 +121,36 @@ You should this as the last messages in your logstash container logs, this means
 [2020-06-16T10:37:22,874][INFO ][org.logstash.beats.Server][main] Starting server on port: 5044
 [2020-06-16T10:37:23,092][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
 ```
+
+If you go to Kibana now and filter for __winlog.event_id : 22__ (Sysmon DNS logs) you will see the new fields appear with a yellow triangle that has am exclamation mark. This means your filter is working and the new fields are added to your DNS logs. However, these new fields still need to be indexed in order to be able to perform searches on them.
+
+![Screenshot command](./assets/03-kibana_enriched.jpg) 
+
+This is easy to fix in Kibana:
+
+1. Click on ***"Management"***, the little cogs in the left bottom corner,
+2. then click on ***"Index Patterns"***,
+3. and finally select your ***"winlogbeat-"*** index
+4. click on ***refresh*** (the icon with the 2 arrows right top corner next to the red trash icon)
+
+![Screenshot command](./assets/03-kibana_refresh.jpg)
+
+If you now go back to your main Kibana Discover tab and you open a DNS event (winlog.event_id : 22), you'll see the orange triangles have disappeared and you can now do searches on the new fields:
+
+![Screenshot command](./assets/03-kibana_indexed.jpg)
+
+Let's hunt with our enriched data!
+
+on your windows machine open a command prompt and __ping www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com__ (remember, the wannacry DGA). The go to your Kibana discover tab and run this query:
+
+```code
+winlog.event_id : 22 AND ENRICH_DNS_ParentQuery_FREQ <= 4.0
+```
+or we can hunt on tags:
+
+```code
+winlog.event_id : 22 AND tags : DGA
+```
+
+![Screenshot command](./assets/03-kibana_hunt.jpg)
+
