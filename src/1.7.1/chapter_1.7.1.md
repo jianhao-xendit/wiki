@@ -123,9 +123,9 @@ So let's go into our Kibana interface again and configure the index and have a l
 
 Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number that was assigned to you in the beginning of the class:
 
-> **NOTE**: The username and password for the Guacamole server are ***"thadmin" / "PROVIDED_PASSWORD"***. For the RDP/SSH connection your username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
+> **NOTE**: The username and password for the Guacamole server and the RDP connection your username __and__ password are studentxx. So if you are ***"student04"***, both your username and password for the windows machine will be ***"student04"***.
 
-**Guacamole Username: thadmin**  
+**Guacamole Username: StudentXX**  
 **Guacamole Password : PROVIDED_PASSWORD**
 
 ![Screenshot command](./assets/02-guacamole.jpg)
