@@ -89,6 +89,16 @@ To load Winlogbeat default visualization dashboards, you need to have created th
 
 Next, if you are using Elasticsearch as your output, you can load the dashboards by running the setup command or enabling dashboard loading in the winlogbeat.yml (setup.dashboards.enabled: true) configuration.
 
+Edit
+
+#============================== Kibana =====================================
+
+# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
+# This requires a Kibana endpoint configuration.
+setup.kibana:
+  host: "http://yourkaliip:5601"
+
+
 ```code
 cd C:\'Program Files'\Winlogbeat>
 .\winlogbeat.exe setup --dashboards
@@ -109,7 +119,7 @@ setup.dashboards.enabled: true
 If you are using __Logstash__ as the output, run the command below to load the dashboards. 
 
 ```code
-cd C:\'Program Files'\Winlogbeat>  
+cd C:\Program Files\winlogbeat-7.6.2-windows-x86_64 
 .\winlogbeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['yourkalimachine:9200']
 ```
 ***source: https://kifarunix.com/send-windows-logs-to-elastic-stack-using-winlogbeat-and-sysmon/***
