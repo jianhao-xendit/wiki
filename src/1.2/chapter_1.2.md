@@ -67,7 +67,15 @@ docker run -d --name portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/doc
 - **-p :** expose networks ports in the container - outside_host/inside_container
 - **-v :** map a directory from the host to directory inside the container - outside_host/inside_container
   
-On your kali linux you can now open CHrome and browse to http://localhost:9000
+Use your browser to connect to the ***[GUACAMOLE](https://guacomole.th.denarm.be/guacamole) server*** and select the __RDP StudentXX__ connection and login with your Student username and password ***(StudentXX/PROVIDED_PASSWORD)***. 
+
+![Screenshot Github](./assets/01-guacamole.jpg)  
+
+On your windows machine you can now open Chrome and browse to http://your_kali_ip:9000
+
+> In Guacamole use CTRL-OPTION-SHIFT to get a copy paste window, paste your content here, then right-click in the windows poowershell or command prompt and your text will be pasted.
+
+![Screenshot Github](./assets/01-guacamole_paste.jpg)
 
 ![Screenshot command](./assets/02-portainergui.jpg)
 
