@@ -39,6 +39,11 @@ So this means your client machines will be forwarding their logs to a central Lo
 > Change the __password__ in the config file below with the ***PROVIDED_PASSWORD***  
 > Change the __queue__ to your student number : for example RabbitQueue_StudentXX -> ***RabbitQueue_Student02***
 
+```code
+cd /opt/threathunt/logstash/pipeline
+nano 100_RabbitMQ_AZURE-input.conf
+```
+
 ```yml
 input {
     rabbitmq {
@@ -68,6 +73,11 @@ OUTPUTS
 ====
 
 The examle below is using a ___tag___ that we defined in our ***winlogbeat agent***, this can be done in the logstash filters as well. We will configure the logging agents in the next chapter, just keep this in mind. The index name is derived from metadata provided by the winlogbeat agent as well
+
+```code
+cd /opt/threathunt/logstash/pipeline
+nano 900_Elastic-output.conf
+```
 
 ```yml
 output {
