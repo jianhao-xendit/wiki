@@ -69,7 +69,7 @@ FILTERS
 For now we're not going to put any filters, we will do this later on when we start enriching our logs.
 
 
-OUTPUTS
+OUTPUTS (Already pre-configured)
 ====
 
 The examle below is using a ___tag___ that we defined in our ***winlogbeat agent***, this can be done in the logstash filters as well. We will configure the logging agents in the next chapter, just keep this in mind. The index name is derived from metadata provided by the winlogbeat agent as well
@@ -79,12 +79,14 @@ cd /opt/threathunt/logstash/pipeline
 nano 900_Elastic-output.conf
 ```
 
+> You don't need to make changes to this file.
+
 ```yml
 output {
   if "windows" in [tags] {
     elasticsearch {
       hosts => "es01:9200"
-      index => "%{[@metadata][beat]}-%{[@metadata][version]}"
+      index => "%{[agent][type]}-%{[agent][version]}-%{+YYYY.MM.dd}"
     }
   }
 }
