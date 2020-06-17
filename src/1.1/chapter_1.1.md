@@ -13,7 +13,7 @@ _"Containers are an abstraction at the app layer that packages code and dependen
 
 ***Source: https://www.docker.com/products/docker-desktop*** 
 
-Use your browser to connect to the ***[GUACAMOLE](https://guacomole.th.denarm.be/guacamole) server*** and select the __Linux SSH ELK__ connection login with your kali username and password ***(thadmin/PROVIDED_PASSWORD)***. First we're going to add the docker repository to our package repository on Kali.
+Use your browser to connect to the ***[GUACAMOLE](https://guacamole.th.denarm.be/guacamole) server*** and select the __Linux SSH ELK__ connection login with your kali username and password ***(thadmin/PROVIDED_PASSWORD)***. First we're going to add the docker repository to our package repository on Kali.
 
 ![Screenshot Github](./assets/01-guacamole.jpg)
  

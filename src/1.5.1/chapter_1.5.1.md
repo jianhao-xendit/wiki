@@ -25,6 +25,20 @@ Let's start by opening powershell open your Windows 10 machine by clicking on th
 
 ![Screenshot command](./assets/04-powershell.jpg)
 
+> Make sure the threathunt git repository is available on your windows machine under C:\threathunt. If it is available then go into the directory and do a ***git pull*** if it isn't do the following from a command prompt
+
+```code
+cd /
+git clone https://github.com/crimsoncore/threathunt_student.git C:\threathunt
+```
+
+or for the git pull
+
+```code
+cd c:\threathunt
+git pull
+```
+
 ```code
 mkdir C:\temp
 (New-Object System.Net.WebClient).DownloadFile("https://download.sysinternals.com/files/Sysmon.zip", "C:\temp\Sysmon.zip")
@@ -64,7 +78,7 @@ Once sysmon has been installed you can now open your windows event viewer by cli
 
 ![Screenshot command](./assets/02-openevent.jpg)
 
- Nownavigate to ***Application and Services Logs > Microsoft > Windows > Symon > Operational***, you can now see that sysmon has created a new windows event log and is tracking process creations (**ID 1**), file creation time changes (**ID 2**),process terminations (**ID 5**), networks sessions (**ID 3**)and other activities. 
+ Nownavigate to ***Application and Services Logs > Microsoft > Windows > Symon > Operational***, you can now see that sysmon has created a new windows event log and is tracking process creations (**ID 1**), file creation time changes (**ID 2**),process terminations (**ID 5**) and other activities. 
 
  ![Screenshot command](./assets/02-eventviewer.jpg)
 

@@ -67,7 +67,7 @@ docker run -d --name portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/doc
 - **-p :** expose networks ports in the container - outside_host/inside_container
 - **-v :** map a directory from the host to directory inside the container - outside_host/inside_container
   
-Use your browser to connect to the ***[GUACAMOLE](https://guacomole.th.denarm.be/guacamole) server*** and select the __RDP StudentXX__ connection and login with your Student username and password ***(StudentXX/PROVIDED_PASSWORD)***. 
+Use your browser to connect to the ***[GUACAMOLE](https://guacamole.th.denarm.be/guacamole) server*** and select the __RDP StudentXX__ connection and login with your Student username and password ***(StudentXX/PROVIDED_PASSWORD)***. 
 
 ![Screenshot Github](./assets/01-guacamole.jpg)  
 
