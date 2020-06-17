@@ -141,3 +141,5 @@ This will create a logstash node in docker, called ***logstash_rest***. You can 
 Click on the little "log" icon to the right of the green "running" label - this will show you if logstash is propely running.
 
 ![Screenshot command](./assets/01-LogstashLogs.jpg)
+
+> ***IMPORTANT*** : When you add new filters to your logstash pipeline, you need to restarts your Logstash docker container (in CLI or with Portainer).
