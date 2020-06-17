@@ -100,7 +100,7 @@ setup.kibana:
 
 
 ```code
-cd C:\'Program Files'\Winlogbeat>
+cd C:\Program Files\winlogbeat-7.6.2-windows-x86_64\
 .\winlogbeat.exe setup --dashboards
 ```
 
