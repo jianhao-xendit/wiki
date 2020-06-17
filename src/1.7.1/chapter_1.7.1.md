@@ -5,7 +5,7 @@
 
 The pipeline looks like this:
 
-![Screenshot command](./assets/01-studentpipe.jpg)
+![Screenshot command](./assets/01-studentpipe.png)
 
 From your Windows 10 Machine's Winlogbeat Agent -> Logstash (on RabbitMQ server) -> RabbitMQ (on RabbitMQ server). Later on we will configure the student ELK servers to pull the logs from their queue.
 
