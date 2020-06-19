@@ -1,128 +1,116 @@
-#   Chapter 1.8.1 - API's : Domain Stats / FreqServer
+#   Chapter 1.9 - Alerting
 
->This chapter explains how to enrich certain logs by adding Logstash filters on your `Kali Linux Machine`, we'll be using tagging and extra fields for frequency scores (how random is a certain domain/service/file name?), Adding geo-location fields, add tags to define if a device is internal/external and pull in whois information on dns queries.
+Manual Install of elastalert on `Kali Linux machine`
+====
 
+>In the labs we'll be skipping these steps, and instead install ElastALert as a docker container on your `Kali Linux machine`, where also you ELK stack is running in docker.
 
-1.0 INSTALLING FreqServer
+***IMPORTANT: It might be necessary to restart your elastalert docker container so it can create its indexes in ELASTICSEARCH. When deploying the container, if ELASTIC SEARH hasn't fully started, this index creation will fail.***
+
+1.0 DOCKER installation of ElastALert
 ===
-_"Mark Baggett’s (@MarkBaggett - GSE #15, SANS SEC573 Author) Awesome-Sauce tool for detecting randomness using NLP techniques rather than pure entropy calculations. Uses character pair frequency analysis to determine the likelihood of tested strings of characters occurring based upon the chosen frequency tables (some prebuilt English text freq tables provided). Extremely useful for detecting high entropy where it shouldn’t be. Especially powerful for discovering DNS based DGAs commonly used for malware C2 and exfiltration. Think bigger than DGAs though. Random file names, script names, process names, service names, workstation names, TLS certificate subjects and issuer subjects, etc."_
-
-First we're going to install __FreqServer__ on our `Kali Lunix machine`
-
-- GITHUB : ***[Original Github Code](https://github.com/MarkBaggett/freq)*** (we're using the latest docker build from Security Onion)
-- DOCUMENTATION : ***[Security Onion FreqServer](https://github.com/Security-Onion-Solutions/security-onion/wiki/FreqServer)***
-- YOUTUBE : ***[Getting the Most out of Freq and Domain_Stats by Mark Baggett](https://www.youtube.com/watch?v=dfrh1FaFUic&feature=youtu.be)***
 
 ```code
 cd /opt/threathunt/docker-compose
-sudo docker-compose -f docker-compose.freqserver.yml up -d
+sudo docker-compose -f docker-compose.elastalert.yml up -d
 ```
 
-Let's have a closer look at the docker-compose file:
-
-```yaml
-version: '3'
-services:    
-  freqserver:
-    image: securityonionsolutions/so-freqserver
-    container_name: freqserver
-    restart: unless-stopped
-    ports:
-      - 10004:10004
-    networks:
-      - elastic
-networks:
-  elastic:
-    driver: bridge
-```
-
-We're now running freqserver (a python script in a docker container, listening on port 10004).
-
-Let's feed is a valid english word:
-
-``` code
-curl http://localhost:10004/measure1/trainstation
-```
-
-![Screenshot command](./assets/01-freq_trainstation.jpg)
-
-We get a score of 8.7832 - the idea here is that the higher the score, the more likely this is an existing (and thus not randomly generated term).
-
-Now let's try some random DGA (the one from [Wannacry](https://www.fireeye.com/blog/threat-research/2017/05/wannacry-malware-profile.html) in this case)
-
-```code
-curl http://localhost:10004/measure1/www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com
-```
-
-We get a score of 3.5319 - a much lower score, as this is clearly not a human generated FQDN. So the lower the score, the more "risky" this is. Now of course there are valid tools that generated random hostnames/ fqdns / servic names and so on - but we'll enriching logs here in multiple ways to create more context.
-
-- Have we seen this domain/service name/file name before in our evironment?
-- How often, how rare is this?  
-- What's the frequency score?  
-- what was the parent process that made the call to the domain or created the service?  
-- If it is a domain name, what is the geo-location?
-- When was the domain registered? Is it in the Cisco Umbrella Top1 most visited websites?
-
-![Screenshot command](./assets/01-freq_dga.jpg)
-
-2.0 INSTALLING Domain_Stats
+2.0 OPTIONAL non-docker installation of ElastAlert on Ubuntu
 ===
 
-Next let's install __Domain_Stats__ on our `Kali Lunix machine`
+```code
+apt install python3-pip  
+python3 -m pip install pip --upgrade && python3 -m pip install wheel  
+sudo -H pip3 install --ignore-installed PyYAML  
+python3 -m pip install elastalert==0.2.1  
+```
 
-- GITHUB : ***[Original Github Code](https://github.com/MarkBaggett/domain_stats)*** (we're using the latest docker build from Security Onion)
-- DOCUMENTATION : ***[Security Onion FreqServer](https://github.com/Security-Onion-Solutions/security-onion/wiki/FreqServer)***
-- YOUTUBE : ***[Getting the Most out of Freq and Domain_Stats by Mark Baggett](https://www.youtube.com/watch?v=dfrh1FaFUic&feature=youtu.be)***
+We're going to create the directories for the elastalert rules and configuration file:
 
 ```code
-cd /opt/threathunt/docker-compose
-sudo docker-compose -f docker-compose.domainstats.yml up -d
+mkdir /opt/elastalert  
+mkdir /opt/elastalert/rules  
+mkdir /opt/elastalert/log  
+mkdir /opt/elastalert/config    
+nano /opt/elastalert/config/config.yaml    
 ```
 
-Let's have a closer look at the docker-compose file:
+And then edit the config.yaml:
 
-```yaml
-version: '3'
-services:  
-  domainstats:
-    image: securityonionsolutions/so-domainstats:latest
-    container_name: domainstats
-    restart: unless-stopped
-    ports:
-      - 20000:20000
-    volumes:
-      - /opt/threathunt/domain_stats/top-1m.csv:/opt/domain_stats/top-1m.csv
-    networks:
-      - elastic
-networks:
-  elastic:
-    driver: bridge
+```yml
+rules_folder: rules
+run_every:
+    seconds: 30
+buffer_time:
+    seconds: 45
+es_host: es01
+es_port: 9200
+alert_time_limit:
+    days: 1
+writeback_index: elastalert_status
+alert_text: "Index: {0} \nEvent_Timestamp: {1} \nBeat_Name: {2} \nUser_Name: {3} \nHost_Name: {4} \nLog_Name: {5} \nOriginal_Message: \n\n{6}"
+alert_text_type: alert_text_only
+alert_text_args: ["_index","@timestamp","beat.name","user_name","host_name","log_name","z_original_message"]
 ```
 
-Let's check the creation date of the google.com domain:
+then let's create the necessary indexes in our elastic stack
+
+```python 
+python3 -m elastalert.create_index --index elastalert_status --config /opt/elastalert/config/config.yaml
+```
+
+3.0 Create an ElastAlert rule
+====
+
+The following instruction will load the field-mappings (`winlogbeat-modules-enabled.yml`) then use the sigma rule (`alert_win_crimsoncore_net.yaml`) to generate an ElastAlert rule (`alert_win_crimsoncore_net.yaml`) in the /opt/threathunt/elastalert/rules/ directory which is mapped to the docker instance of ElastAlert. 
+
+See image below which show parts of the docker-compose file that runs ElastALert in a cointainer:
+
+![Screenshot command](./assets/02-elastalert_dockervolume.jpg)
 
 ```code
-curl http://localhost:20000/domain/creation_date/google.com
+sudo sigmac --target elastalert --config /opt/sigma/tools/config/winlogbeat-modules-enabled.yml --output /opt/threathunt/elastalert/rules/alert_win_crimsoncore_net.yaml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
 ```
-
-And let's see what position google.com has in the Umbrella Top 1M sites:
 
 ```code
-curl http://localhost:20000/domain/alexa/google.com
+python3 -m elastalert.elastalert --config /opt/elastalert/config.yaml  --verbose --start $(date +"%Y-%m-%d")
 ```
 
-What we're doing here is checking a CSV file that is found under /opt/threathunt/domain_stats - so see if the domain is in the Top 1 Million most visited sites, and how high they up the list the domain is. If the domain is not found in this list, it's potentially suspicious - combining that with other contextual information this helps an analist to quickly triage noise from real suspicious events.
+go to your kibana and make sure you create elast-alert indexes by going to Management -> Index Patterns -> "Create index pattern" and enter the index-name "elastalert-*"
 
-You can update the list by running:
+Elast-Alert docs
+https://elastalert.readthedocs.io/en/latest/index.html
 
-```code
-cd /opt/threathunt/domain_stats
-sudo /UmbrellaTop1M.sh 
+This is the result ElastAlert rule:
+
+```yml
+alert:
+- debug
+description: Detects recon using net.exe commands
+filter:
+- query:
+    query_string:
+      query: (winlog.channel:"Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:"1" AND process.executable:(*net.exe OR *net1.exe))
+index: winlogbeat-*
+name: Test_0
+priority: 2
+realert:
+  minutes: 0
+type: any
+
+alert_text: "Username: {2} --- Endpoint: {0} --- CommandLine: {1} --- Time: {3}"
+alert_text_type: alert_text_only
+alert_text_args:
+- host.name
+- process.args
+- user.name
+- "@timestamp"
+#- kibana_link
+
+#<a href='{3}'>Kibana link</a>
+
+alert:
+- "slack"
+slack:
+slack_webhook_url: "https://hooks.slack.com/services/KEYWILLBEPROVIDED"
 ```
-
-You can schedule this if you want, and the screenshot below shows how __dell.com__ has moved from position 2061 to 1914 with the latest update. This is not really that important, we're mainly interested in fqdn that are __NOT__ in the list at all.
-
-![Screenshot command](./assets/02-domainstats-update.jpg)
-
-internal/external tagging  
-geolocation  
