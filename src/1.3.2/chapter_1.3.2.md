@@ -1,4 +1,4 @@
-#   Chapter 1.5.2 - Zeek (Network)
+#   Chapter 1.3.2 - Zeek (Network)
 
 >This chapter explains how to install the Zeek on your `Kali Linux Machine`
 

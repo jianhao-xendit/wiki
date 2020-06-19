@@ -3,7 +3,7 @@
 - [**CHAPTER 1 - Infrastructure**](./1/chapter_1.md)
   - [  Chapter 1.1 - Docker](./1.1/chapter_1.1.md)
   - [  Chapter 1.2 - Portainer](./1.2/chapter_1.2.md)
-  - [  Chapter 1.3 - MDBook](./1.3/chapter_1.3.md)
+
   - [  Chapter 1.4 - Sigma](./1.4/chapter_1.4.md)
   - [  Chapter 1.5 - EDR & NDR](./1.5/chapter_1.5.md)
     - [  Chapter 1.5.1 - Sysmon](./1.5.1/chapter_1.5.1.md)
@@ -62,3 +62,4 @@
   - [  Chapter X.3 - Coder](./X/Jump.md)
   - [  Chapter X.4 - Jupyter](./X/Jupyter.md)
   - [  Chapter X.5 - DNS](./X/DNS.md)
+  - [  Chapter X.6 - MDBook](./X/MDBOOK.md)

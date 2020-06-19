@@ -1,4 +1,4 @@
-#   Chapter 1.5.4 - GPO's (Windows Endpoint)
+#   Chapter 1.3.4 - GPO's (Windows Endpoint)
 
 All the policies below are already configured on the `Domain Controller` and are polled by all windows machines that join the domain.  
 

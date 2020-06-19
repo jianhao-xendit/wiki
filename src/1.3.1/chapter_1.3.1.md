@@ -1,4 +1,4 @@
-#   Chapter 1.5.1 - Sysmon (Windows Endpoint)
+#   Chapter 1.3.1 - Sysmon (Windows Endpoint)
 
 >This chapter explains how to install the Sysmon on your `Windows 10 Machine`
 

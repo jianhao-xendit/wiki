@@ -1,4 +1,4 @@
-#   Chapter 1.5.3 - Auditd (Linux Endpoint)
+#   Chapter 1.3.3 - Auditd (Linux Endpoint)
 
 Install
 ====
