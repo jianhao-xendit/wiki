@@ -1,4 +1,4 @@
-#   Chapter 1.4: Sigma
+#   Chapter 1.7: Sigma
 >This chapter explains how to install Sigma on your `Kali linux machine`
 
 _"Sigma is a generic and open signature format that allows you to describe relevant log events in a straight forward manner. The rule format is very flexible, easy to write and applicable to any type of log file. The main purpose of this project is to provide a structured form in which researchers or analysts can describe their once developed detection methods and make them shareable with others."_

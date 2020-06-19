@@ -1,4 +1,4 @@
-#   Chapter 1.8.1 - API's : Domain Stats / FreqServer
+#   Chapter 1.6.1 - API's : Domain Stats / FreqServer
 
 >This chapter explains how to enrich certain logs by adding Logstash filters on your `Kali Linux Machine`, we'll be using tagging and extra fields for frequency scores (how random is a certain domain/service/file name?), Adding geo-location fields, add tags to define if a device is internal/external and pull in whois information on dns queries.
 

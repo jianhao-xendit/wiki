@@ -1,4 +1,4 @@
-#   Chapter 1.6 - ELK
+#   Chapter 1.4 - ELK
 
 >This chapter explains how to install the complete ELK stack on your `Kali linux machine`
 

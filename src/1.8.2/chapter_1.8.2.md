@@ -1,4 +1,4 @@
-#   Chapter 1.9.2 - Slack Webhooks for ElastAlert
+#   Chapter 1.8.2 - Slack Webhooks for ElastAlert
 
 go to https://api.slack.com/apps and click on create new app:  
 

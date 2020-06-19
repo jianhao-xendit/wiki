@@ -1,4 +1,4 @@
-#   Chapter 1.6.1 - ELK
+#   Chapter 1.4.1 - ELK
 
 
 ![Screenshot command](./assets/01-ELK-Stack.png)

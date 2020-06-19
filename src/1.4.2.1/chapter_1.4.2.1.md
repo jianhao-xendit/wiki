@@ -1,4 +1,4 @@
-#   Chapter 1.6.2.1 - Configuring Logstash to use SSL
+#   Chapter 1.4.2.1 - Configuring Logstash to use SSL
 
 On your `Kali Linux Machine`
 

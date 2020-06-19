@@ -1,4 +1,4 @@
-#   Chapter 1.7.3 - Auditbeat
+#   Chapter 1.5.3 - Auditbeat
 >This chapter explains how to install the Auditbeat on your `Kali Linux Machine`, and ship logs to the RabbitMQ server.
 
 ***RabbitMQ*** is a message queue that is used in this class to collect all the students winlogbeat logs, through a logstash instance.

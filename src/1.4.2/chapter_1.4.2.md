@@ -1,4 +1,4 @@
-#   Chapter 1.6.2 - Logstash
+#   Chapter 1.4.2 - Logstash
 
 >This chapter explains how to install Logstash on your `Kali linux machine`
 

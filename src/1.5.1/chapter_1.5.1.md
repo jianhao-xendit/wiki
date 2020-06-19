@@ -1,4 +1,4 @@
-#   Chapter 1.7 - Winlogbeat
+#   Chapter 1.5.1 - Winlogbeat
 >This chapter explains how to install the Winlogbeat on your `Windows 10 Machine`, and ship logs to the RabbitMQ server.
 
 ***RabbitMQ*** is a message queue that is used in this class to collect all the students winlogbeat logs, through a logstash instance.

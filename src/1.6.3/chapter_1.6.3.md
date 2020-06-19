@@ -1,4 +1,4 @@
-#   Chapter 1.8.2 - Kibana Views
+#   Chapter 1.6.3 - Kibana Views
 
 Clickable links in Kibana
 ====

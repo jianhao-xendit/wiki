@@ -1,1 +1,1 @@
-#   Chapter 1.7.4 - Azure Cloud
+#   Chapter 1.5.4 - Azure Cloud

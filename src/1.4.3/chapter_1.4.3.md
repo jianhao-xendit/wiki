@@ -1,4 +1,4 @@
-#   Chapter 1.6.3 - Kibana
+#   Chapter 1.4.3 - Kibana
 
 INSTALL
 ====

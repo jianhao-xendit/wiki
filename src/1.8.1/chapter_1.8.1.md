@@ -1,4 +1,4 @@
-#   Chapter 1.9 - Alerting
+#   Chapter 1.8.1 - ElastAlert
 
 Manual Install of elastalert on `Kali Linux machine`
 ====
