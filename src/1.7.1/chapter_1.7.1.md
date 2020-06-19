@@ -103,8 +103,6 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
 
 ![Screenshot command](./assets/02-guacamole.jpg)
 
-Open your web browser (preferably chrome) and surf to http://kibana-az-elk-`lsazure`.westeurope.cloudapp.azure.com/
-
 In Kibana:
 
 1. Click on ***"Management"***, the little cogs in the left bottom corner,
@@ -112,6 +110,8 @@ In Kibana:
 3. and finally click on ***"Create index pattern"***
 
 ![Screenshot command](./assets/03-kibanaindex.jpg)
+
+> ***IF THERE IS ALREADY AN INDEX CALLED "winlogbeat-" THEN YOU CAN SKIP THE NEXT STEP***
 
 1. Enter the index name "winlogbeat-*"
 2. Click "Next Step"
