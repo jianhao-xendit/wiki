@@ -10,9 +10,17 @@ Mitre: T1003
 
 Microsoft from Windows 8.1 and Windows Server 2012 enhanced security by preventing LSASS from storing passwords in clear-text. However in a system that has been already compromised with elevated credentials a minor registry modification can instruct LSASS process to store clear-text passwords in its memory in the next login of the user
 
+![WDIGEST](assets/01-reg_wdigest.jpg)
+
 ```code
-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest “UseLogonCredential”(DWORD)
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" /v UseLogonCredential /t REG_DWORD /d 00000001 /f"
 ```
+
+![WDIGEST](assets/01-reg_wdigest_clear.jpg) 
+
+If you now run Mimikatz.exe, you'll see clear-text credentials in memory again. Even on Windows 10 - maybe that's a registry key we want to keep an eye on with Sysmon ;-) ?
+
+![WDIGEST](assets/01-mimi_clear.jpg) 
 
 
 ```code
