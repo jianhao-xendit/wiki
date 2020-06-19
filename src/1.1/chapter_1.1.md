@@ -1,4 +1,4 @@
-#   CHAPTER 1.1: Deploying Docker & Docker-Compose
+#   CHAPTER 1.1 - Deploying Docker & Docker-Compose
 >This chapter explains how to install ***Docker*** and ***Docker-Compose*** on your `Kali linux machine`
 
 1.0 Installing Docker

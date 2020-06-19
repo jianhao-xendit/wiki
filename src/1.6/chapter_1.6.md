@@ -1,1 +1,1 @@
-#   Chapter 1.8 - Enrichment
+#   Chapter 1.6 - Enrichment
