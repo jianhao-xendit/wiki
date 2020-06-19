@@ -1,4 +1,4 @@
-#   Chapter 1.6.2 - Logstash FIlters
+#   Chapter 1.6.2 - Logstash Filters
 
 >This chapter explains how to query the 2 previously API's and add custom fields with the results to the logs, before they get indexed>
 
