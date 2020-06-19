@@ -106,6 +106,11 @@ docker build -t docker_mdbook:lean .
 docker images
 ```
 
+to change tags on an image:
+```code
+docker tag logstash_rest:8.0.0 logstash_rest:7.8.0
+```
+
 git clone your wiki and move to that folder:
 
 ```
