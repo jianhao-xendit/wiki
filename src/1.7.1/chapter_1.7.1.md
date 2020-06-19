@@ -41,7 +41,7 @@ cp 'C:\threathunt\labsetup\winlogbeat.yml' 'C:\Program Files\winlogbeat-7.8.0-wi
 
 use notepad++ to edit the winlogbeat.yml file, and let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6:5044) Logstash instance:
 
-1. ***DASHBOARDSs:*** Make sure that Kibana dashboards are set to enabled and true (uncomment that line) - ***"setup.dashboards.enabled: true"***
+1. ***DASHBOARDS:*** Make sure that Kibana dashboards are set to enabled and true (uncomment that line) - ***"setup.dashboards.enabled: true"***
 2. ***KIBANA:*** Point the Kibana section to your own Kali Linux machine (***host: http://10.0.0.5x:5601***)
 3. ***LOGSTASH OUTPUT:*** Verify that the output is logstash and pointing to the central Logstash/RabbitMQ server (***hosts: ["10.0.0.6:5044"]***)
 
