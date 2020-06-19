@@ -30,7 +30,7 @@ You can have a look at the docker-compose file:
 version: '3'
 services:
   es01:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
     container_name: es01
     restart: unless-stopped
     environment:
@@ -51,7 +51,7 @@ services:
     networks:
       - elastic
   es02:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
     container_name: es02
     restart: unless-stopped
     environment:
@@ -70,7 +70,7 @@ services:
     networks:
       - elastic
   es03:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
     container_name: es03
     restart: unless-stopped
     environment:
@@ -132,8 +132,8 @@ POST /_aliases?pretty
 Winlogbeat templates:
 ----
 
-.\winlogbeat.exe export template --es.version 7.6.2 | Out-File -Encoding UTF8 winlogbeat.template.json  
-Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://localhost:9200/_template/winlogbeat-7.6.2
+.\winlogbeat.exe export template --es.version 7.8.0 | Out-File -Encoding UTF8 winlogbeat.template.json  
+Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://localhost:9200/_template/winlogbeat-7.8.0
 
 https://www.elastic.co/guide/en/beats/winlogbeat/current/winlogbeat-template.html
 

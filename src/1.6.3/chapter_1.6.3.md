@@ -16,7 +16,7 @@ You can have a look at the docker-compose file:
 version: '3'
 services:
   kibana:
-    image: 'docker.elastic.co/kibana/kibana:7.6.2'
+    image: 'docker.elastic.co/kibana/kibana:7.8.0'
     container_name: kibana
     restart: unless-stopped
     volumes:

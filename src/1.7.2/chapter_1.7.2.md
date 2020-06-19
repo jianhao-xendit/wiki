@@ -27,10 +27,10 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
 441  cd mkdir  
   442  cd packetbeat/  
   443  ls  
-  444  curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.6.2-linux-x86_64.tar.gz  
-  445  tar xzvf packetbeat-7.6.2-linux-x86_64.tar.gz  
+  444  curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.8.0-linux-x86_64.tar.gz  
+  445  tar xzvf packetbeat-7.8.0-linux-x86_64.tar.gz  
   446  ls  
-  447  cd packetbeat-7.6.2-linux-x86_64/  
+  447  cd packetbeat-7.8.0-linux-x86_64/  
   448  ls  
   449  nano packetbeat.yml   
   450  ifconfig  

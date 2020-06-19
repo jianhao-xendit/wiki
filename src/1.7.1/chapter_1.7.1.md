@@ -24,19 +24,19 @@ open powershell and run as ___administrator___:
 
 ```code
 mkdir c:\temp
-(New-Object System.Net.WebClient).DownloadFile("https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.6.2-windows-x86_64.zip", "C:\temp\winlogbeat-7.6.2-windows-x86_64.zip")
-Expand-Archive C:\temp\winlogbeat-7.6.2-windows-x86_64.zip -DestinationPath "C:\program files\"
-cd "C:\program files\winlogbeat-7.6.2-windows-x86_64"
+(New-Object System.Net.WebClient).DownloadFile("https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.8.0-windows-x86_64.zip", "C:\temp\winlogbeat-7.8.0-windows-x86_64.zip")
+Expand-Archive C:\temp\winlogbeat-7.8.0-windows-x86_64.zip -DestinationPath "C:\program files\"
+cd "C:\program files\winlogbeat-7.8.0-windows-x86_64"
 dir
 ```
 
 1.1 - "VERIFY the winlogbeat configuration"   
 ===
 
-We already provided are preconfigured winlogbeat.yml file, located under "C:\threathunt\labsetup\", copy that file to "C:\program files\winlogbeat-7.6.2-windows-x86_64" and verify that the configuration is pointing to the central Logstash/RabbitMQ:
+We already provided are preconfigured winlogbeat.yml file, located under "C:\threathunt\labsetup\", copy that file to "C:\program files\winlogbeat-7.8.0-windows-x86_64" and verify that the configuration is pointing to the central Logstash/RabbitMQ:
 
 ```code
-cp 'C:\threathunt\labsetup\winlogbeat.yml' 'C:\Program Files\winlogbeat-7.6.2-windows-x86_64\'
+cp 'C:\threathunt\labsetup\winlogbeat.yml' 'C:\Program Files\winlogbeat-7.8.0-windows-x86_64\'
 ```
 
 use notepad++ to edit the winlogbeat.yml file, and let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6:5044) Logstash instance:
@@ -60,7 +60,7 @@ Before installing and starting the agent - we need to make sure that ***Elastic 
 Finally install winlogbeat, use powershell copy the following command.
 
 ```code
-cp C:\threathunt\labsetup\winlogbeat.yml 'C:\Program Files\winlogbeat-7.6.2-windows-x86_64\'
+cp C:\threathunt\labsetup\winlogbeat.yml 'C:\Program Files\winlogbeat-7.8.0-windows-x86_64\'
 .\install-service-winlogbeat.ps1
 start-service winlogbeat
 get-service winlogbeat
@@ -107,7 +107,7 @@ setup.kibana:
 
 
 ```code
-cd C:\Program Files\winlogbeat-7.6.2-windows-x86_64\
+cd C:\Program Files\winlogbeat-7.8.0-windows-x86_64\
 .\winlogbeat.exe setup --dashboards
 ```
 
@@ -188,8 +188,8 @@ Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat
 ```
 
 ```
-.\winlogbeat.exe export template --es.version 7.6.2 | Out-File -Encoding UTF8 winlogbeat.template.json
-Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://192.168.100.199:9200/_template/winlogbeat-7.6.2
+.\winlogbeat.exe export template --es.version 7.8.0 | Out-File -Encoding UTF8 winlogbeat.template.json
+Invoke-RestMethod -Method Put -ContentType "application/json" -InFile winlogbeat.template.json -Uri http://192.168.100.199:9200/_template/winlogbeat-7.8.2
 ```
 
 
