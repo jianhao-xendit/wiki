@@ -33,7 +33,7 @@ dir
 1.1 - "VERIFY the winlogbeat configuration"   
 ===
 
-We already provided are preconfigured winlogbeat.yml file, located under "C:\threathunt\labsetup\", copy that file to "C:\program files\winlogbeat-7.8.0-windows-x86_64" and verify that the configuration is pointing to the central Logstash/RabbitMQ:
+We already provided are preconfigured winlogbeat.yml file, located under "C:\threathunt\labsetup\", copy that file to "C:\program files\winlogbeat-7.8.0-windows-x86_64" and have a lool at the configuration:
 
 ```code
 cp 'C:\threathunt\labsetup\winlogbeat.yml' 'C:\Program Files\winlogbeat-7.8.0-windows-x86_64\'
@@ -41,7 +41,11 @@ cp 'C:\threathunt\labsetup\winlogbeat.yml' 'C:\Program Files\winlogbeat-7.8.0-wi
 
 use notepad++ to edit the winlogbeat.yml file, and let's make sure the config file is correct, edit the ***winlogbeat.yml*** and check that the Logstash output is uncommented and pointing to the RabbitMQ server's (10.0.0.6:5044) Logstash instance:
 
-![Screenshot command](./assets/01-winlogbeat_mq.jpg)  
+1. ***DASHBOARDSs:*** Make sure that Kibana dashboards are set to enabled and true (uncomment that line) - ***"setup.dashboards.enabled: true"***
+2. ***KIBANA:*** Point the Kibana section to your own Kali Linux machine (***host: http://10.0.0.5x:5601***)
+3. ***LOGSTASH OUTPUT:*** Verify that the output is logstash and pointing to the central Logstash/RabbitMQ server (***hosts: ["10.0.0.6:5044"]***)
+
+![Screenshot command](./assets/01-winlogbeat_mq-2.jpg)  
 
 1.2 - "LOAD Elasticsearch templates"   
 ===
@@ -81,36 +85,6 @@ or
 ```code
 .\winlogbeat.exe test config -c .\winlogbeat.yml -e
 ```
-
-1.4 - "SETUP Kibana Dashboards"
-===
-
-To load Winlogbeat default visualization dashboards, you need to have created the index pattern. Hence, navigate to Kibana and create the Winlogbeat index pattern.  
-
-Next, if you are using Elasticsearch as your output, you can load the dashboards by running the setup command or enabling dashboard loading in the winlogbeat.yml (setup.dashboards.enabled: true) configuration.
-
-#============================== Dashboards =====================================
-# These settings control loading the sample dashboards to the Kibana index. Loading
-# the dashboards is disabled by default and can be enabled either by setting the
-# options here or by using the `setup` command.
-#setup.dashboards.enabled: false
-setup.dashboards.enabled: true
-
-Edit
-
-#============================== Kibana =====================================
-
-# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
-# This requires a Kibana endpoint configuration.
-setup.kibana:
-  host: "http://yourkaliip:5601"
-
-
-```code
-cd C:\Program Files\winlogbeat-7.8.0-windows-x86_64\
-.\winlogbeat.exe setup --dashboards
-```
-
 ***source: https://kifarunix.com/send-windows-logs-to-elastic-stack-using-winlogbeat-and-sysmon/***
 
 2.0 - "CREATING your index"
@@ -131,16 +105,6 @@ Connect with `GUACAMOLE SSH` to your Kali Linux, select the right student number
 
 Open your web browser (preferably chrome) and surf to http://kibana-az-elk-`lsazure`.westeurope.cloudapp.azure.com/
 
-You will be prompted to authenticate:
-
-**Username:**
-```code
-test
-```
-**Password:**
-```code
-test
-```
 In Kibana:
 
 1. Click on ***"Management"***, the little cogs in the left bottom corner,
