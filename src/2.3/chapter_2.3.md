@@ -8,6 +8,12 @@ Mitre: T1003
 
 - **LSASS** [Memory] : The Local Security Authority Subsystem Service (LSASS) handles the enforcement of security policy in a Windows host. In Windows environments from 2000 to Server 2008 the memory of the LSASS process was storing passwords in clear-text to support WDigest and SSP authentication. 
 
+Credentials are stored in LSASS when:
+
+1. a user logs on locally to the system
+2. you use runas and provide credentials
+3. an RDP connection is established
+
 Microsoft from Windows 8.1 and Windows Server 2012 enhanced security by preventing LSASS from storing passwords in clear-text. However in a system that has been already compromised with elevated credentials a minor registry modification can instruct LSASS process to store clear-text passwords in its memory in the next login of the user
 
 ![WDIGEST](assets/01-reg_wdigest.jpg)
@@ -45,3 +51,8 @@ reg save hklm\system c:\temp\system.save
 ```
 
 - **NTDS.dit** file : hashes of domain accounts, present on Domain Controllers. Active Directory stores information about members of the domain including devices and users to verify credentials and define access rights. The Active Directory domain database is stored in the NTDS.dit file. By default the NTDS file will be located in %SystemRoot%\NTDS\Ntds.dit of a domain controller.
+
+PREVENTION
+===
+
+https://medium.com/blue-team/preventing-mimikatz-attacks-ed283e7ebdd5
