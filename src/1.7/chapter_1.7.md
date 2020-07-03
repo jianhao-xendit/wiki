@@ -82,6 +82,7 @@ So let's write our first simple Sigma rule for detecting net commands:
 nano /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
 ```
 
+
 copy/paste the following code, you can see here the OriginalFileName mapping is used, but it wasn't known in the default winlogbeat mapping as this is a rather new field in __sysmon__:
 
 ```yaml
@@ -110,6 +111,10 @@ falsepositives:
     - Very likely, needs more tuning
 level: high
 ```
+
+We'll now run sigma on this new rule template:
+
+![Screenshot](./assets/03-sigma_backend_pipe3.jpg)
 
 ```code 
 sigmac -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
