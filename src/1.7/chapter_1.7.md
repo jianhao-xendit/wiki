@@ -50,6 +50,13 @@ So when we generate our first sigma rule, we first define the query language (ou
 
 Then we select the Field Mappings - which normalizes raw field names to standardized ones across different log sources:
 
+```code
+cd /opt/sigma/tools/config
+ls -l
+```
+
+We'll be using the ***winlogbeat-modules-enabled.yml*** Field Mappings configuration as this is how we configured our winlogbeat agent on windows.
+
 ![Screenshot](./assets/03-sigma_backend_pipe2.jpg)
 
 ![Screenshot](./assets/03-sigma_rawxml.jpg)
@@ -75,7 +82,7 @@ So let's write our first simple Sigma rule for detecting net commands:
 nano /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
 ```
 
-copy/paste the following code, you can see here the OriginalFileName mapping is used, but it wasn't known in the default winlogbeat mapping as this is a rather new field in symon:
+copy/paste the following code, you can see here the OriginalFileName mapping is used, but it wasn't known in the default winlogbeat mapping as this is a rather new field in __sysmon__:
 
 ```yaml
 title: Net commands
@@ -108,11 +115,54 @@ level: high
 sigmac -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
 ```
 
-> !!! You will have to remove the escape "\" and .keyword from the query 
+The resulting query is this:
 
-resulting Kibana query:
+```code
+(winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1" AND OriginalFileName.keyword:(*net.exe OR *net1.exe))
+```
 
-> (winlog.channel : "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:"1" AND process.executable:(*net.exe OR *net1.exe))
+***IMPORTANT!!! You will have to remove the escape "backslashes" and .keyword from the query the working Kibana query should look like this:*** 
 
-So what is all this about?
+![Screenshot](./assets/01-sigma_delete.jpg)
 
+> (winlog.channel : "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:"1" AND winlog.event_data.OriginalFileName:(*net.exe OR *net1.exe))
+
+You can also write this query on the ***ProcessName*** instead of the ***OriginalFileName***
+
+```yaml
+title: Net commands
+id:
+status: experimental
+description: Detects recon using net.exe commands
+references:
+    - https://
+author: Luk Schoonaert (CrimsonCORE)
+date: 2020/03/22
+tags:
+    - attack.
+    - attack.t
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection:
+        EventID: 1
+        ProcessName:
+            - '*net.exe'
+            - '*net1.exe'
+    condition: selection
+falsepositives:
+    - Very likely, needs more tuning
+level: high
+```
+
+```code 
+sigmac -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
+```
+
+The resulting query is this:
+
+```code
+(winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1" AND process.executable.keyword:(*net.exe OR *net1.exe))
+```
+***Again you need to clean up the backslashes and .keyword argument.***
