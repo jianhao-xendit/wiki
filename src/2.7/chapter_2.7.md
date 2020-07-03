@@ -69,3 +69,10 @@ Kibana Query:
 ```code
 (process.parent.executable:("*\\EXCEL.EXE") AND process.executable:("*\\cmd.exe"))
 ```
+
+When you run this, the results will be empty - for some reason sigma is adding quotation marks and Kibana doesn't like this. So just remove the "". The resulting query should be:
+
+Kibana Query:
+```code
+(process.parent.executable:(*\\EXCEL.EXE) AND process.executable:(*\\cmd.exe))
+```

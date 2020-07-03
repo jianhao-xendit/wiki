@@ -96,5 +96,16 @@ sigmac -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/t
 
 > !!! You will have to remove the escape "\" and .keyword from the query 
 
-result query:  
->(winlog.channel : "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:"1" AND process.executable:(*net.exe OR *net1.exe))
+resulting Kibana query:
+
+> (winlog.channel : "Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:"1" AND process.executable:(*net.exe OR *net1.exe))
+
+So what is all this about?
+
+Sigma backends (the query for your specific SIEM) include all of the below, you can even generate powershell queries, WDATP (Microsoft Defender ATP) and any popular SIEM:
+
+![Screenshot](./assets/03-sigma_backend.jpg)
+
+So when we ran our sigma rule we first defined the query language (our backend SIEM):
+
+![Screenshot](./assets/03-sigma_backend_pipe1.jpg)
