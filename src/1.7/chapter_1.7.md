@@ -40,7 +40,7 @@ sudo git clone https://github.com/crimsoncore/sigma.git
 Working with Sigma
 ====
 
-Let's make a very simple Sigma rule that detects net.exe commands being executed. Before we start, let's edit the sigma mapping file:  
+Let's make a very simple Sigma rule that detects net.exe commands being executed. Before we start, let's edit the sigma mapping file (more about this later):  
 
 ```code
 nano /opt/sigma/tools/config/winlogbeat.yml
@@ -48,14 +48,38 @@ nano /opt/sigma/tools/config/winlogbeat.yml
 
 ![Screenshot command](./assets/01-Sigma_winlogbeat.jpg)
 
-and change the index to the one we have configured in our ELK stack, the default value here is "winlogbeat-*" which we're going to change to "logstash-*" :
+We could change the default index to the one we have configured in our ELK stack, the default value here is ***"winlogbeat-"*** which which is the same as our index in Elastic. So no changes needed, all good to go!
 
->We're also going to add the field winlog.event_data.OriginalFileName to the mapping file, scroll down a bit in the winlogbeat.yml file:
+Sigma supports multiple backends (the query for your specific SIEM) include all of the below, you can even generate powershell queries, WDATP (Microsoft Defender ATP) or queries for any popular SIEM:
+
+![Screenshot](./assets/03-sigma_backend.jpg)
+
+So when we generate our first sigma rule, we first define the query language (our backend SIEM):
+
+![Screenshot](./assets/03-sigma_backend_pipe1.jpg)
+
+Then we select the Field Mappings - which normalizes raw field names to standardized ones across different log sources:
+
+![Screenshot](./assets/03-sigma_backend_pipe2.jpg)
+
+![Screenshot](./assets/03-sigma_rawxml.jpg)
+
+![Screenshot](./assets/03-sigma_rawkibana.jpg)
+
+If we would look in Kibana for ***process.executable : exists*** we will find different event ID's from several sources (Sysmon and Windows Security Auditing) - all have a different original raw field name, but by using these field mappins they get normalized:
+
+![Screenshot](./assets/03-sigma_normal.jpg)
+
+As you can see ***EventID 4688*** (commandline logging from the windows security logs) has a raw field name called ***NewProcessName*** which gets also normalized. With the ***ECS*** (ELastic Common Schema) a lot of these field mappings happen automatically withon ELastic by using winlogbeat modules. If a certain field is missing, we'd need to add this field here in Sigma's mapping config file. 
+
+![Screenshot](./assets/03-sigma_4688.jpg)
+
+
+> We could, for example, add the field winlog.event_data.OriginalFileName to the mapping file, scroll down a bit in the winlogbeat.yml file:
 
 ![Screenshot command](./assets/01-Sigma_winlogbeat_orgfile.jpg)
 
-
-Very simple sigma rule for detecting net commands:
+So let's write our first simple Sigma rule for detecting net commands:
 
 ```yaml
 nano /opt/threathunt/sigma_rules/win_crimsoncore_net.yaml
@@ -102,10 +126,3 @@ resulting Kibana query:
 
 So what is all this about?
 
-Sigma backends (the query for your specific SIEM) include all of the below, you can even generate powershell queries, WDATP (Microsoft Defender ATP) and any popular SIEM:
-
-![Screenshot](./assets/03-sigma_backend.jpg)
-
-So when we ran our sigma rule we first defined the query language (our backend SIEM):
-
-![Screenshot](./assets/03-sigma_backend_pipe1.jpg)
