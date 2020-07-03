@@ -40,16 +40,6 @@ sudo git clone https://github.com/crimsoncore/sigma.git
 Working with Sigma
 ====
 
-Let's make a very simple Sigma rule that detects net.exe commands being executed. Before we start, let's edit the sigma mapping file (more about this later):  
-
-```code
-nano /opt/sigma/tools/config/winlogbeat.yml
-```
-
-![Screenshot command](./assets/01-Sigma_winlogbeat.jpg)
-
-We could change the default index to the one we have configured in our ELK stack, the default value here is ***"winlogbeat-"*** which which is the same as our index in Elastic. So no changes needed, all good to go!
-
 Sigma supports multiple backends (the query for your specific SIEM) include all of the below, you can even generate powershell queries, WDATP (Microsoft Defender ATP) or queries for any popular SIEM:
 
 ![Screenshot](./assets/03-sigma_backend.jpg)
