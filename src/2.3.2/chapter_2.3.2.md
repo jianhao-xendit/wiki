@@ -60,7 +60,7 @@ TASKMANAGER
 sigmac -I -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/threathunt/sigma_rules/win_crimsoncore_lsass_dump.yml
 ```
 
-Kibana Query
+Kibana Query:
 
 ```code
 (winlog.channel:"Microsoft-Windows-Sysmon/Operational" AND winlog.event_id:"10" AND winlog.event_data.TargetImage:"C:\Windows\system32\lsass.exe" AND winlog.event_data.GrantedAccess:"0x1fffff" AND winlog.event_data.CallTrace:(*dbghelp.DLL* OR *dbgcore.DLL*))
@@ -159,3 +159,53 @@ event.code : 4688 AND process.command_line : *lsass.exe*
 
 Here we can see that the commandline logging only caught one tool - since the other tools don't pass any arguments that contain ***"lsass.exe"***, you can see how these detection are more brittle than detections that are based on process access and function calls, loaded dll's etc.
 
+Let's tweak the Mimikatz detection rule a bit, we can see that the GoogleUpdater is triggering a False Positive on this rule.  
+
+> PAY Attention, editing the rules is finicky - don't use tabs (spaces only) and make sure all the code blocks are aligned.
+
+```code 
+nano /opt/threathunt/sigma_rules/win_crimsoncore_mimikatz_lsass_injection.yml
+```
+
+```yaml
+title: Mimikatz Detection LSASS Access
+status: experimental
+description: Detects process access to LSASS which is typical for Mimikatz (0x1000 PROCESS_QUERY_ LIMITED_INFORMATION, 0x0400 PROCESS_QUERY_ INFORMATION "only $
+    versions", 0x0010 PROCESS_VM_READ)
+references:
+    - https://cyberwardog.blogspot.com/2017/03/chronicles-of-threat-hunter-hunting-for_22.html
+tags:
+    - attack.t1003
+    - attack.s0002
+    - attack.credential_access
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection:
+        EventID: 10
+        TargetImage: 'C:\Windows\system32\lsass.exe'
+        GrantedAccess:
+            - '0x1410'
+            - '0x1010'
+    filter1:
+            ProcessName: 
+            - '*GoogleUpdate.exe'
+            - '*other_process.exe*'
+    condition: selection and not ( filter1 )
+falsepositives:
+    - unknown
+level: high
+```
+
+We added a ***filter1*** section where we can whitelist processes we want to exclude from this detection rule.
+
+```code
+sigmac -I -t es-qs -c /opt/sigma/tools/config/winlogbeat-modules-enabled.yml /opt/threathunt/sigma_rules/win_crimsoncore_mimikatz_lsass_injection.yml
+```
+
+Kibana Query:
+
+```code
+(winlog.channel:"Microsoft-Windows-Sysmon/Operational" AND (winlog.event_id:"10" AND winlog.event_data.TargetImage:"C:\Windows\system32\lsass.exe" AND winlog.event_data.GrantedAccess:("0x1410" OR "0x1010")) AND (NOT ((winlog.channel:"Microsoft-Windows-Sysmon/Operational" AND process.executable:*GoogleUpdate.exe))))
+```
