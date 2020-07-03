@@ -26,7 +26,7 @@ logsource:
 detection:
     selection:
         EventID: 10
-        TargetImage: 'C:\windows\system32\lsass.exe'
+        TargetImage: 'C:\Windows\system32\lsass.exe'
         GrantedAccess:
             - '0x1410'
             - '0x1010'
@@ -132,4 +132,30 @@ falsepositives:
     - unknown
 level: high
 ```
+
+We can now also investigate further for `file creations` (***Sysmon Event ID 11***), by using the following Kibana Query
+
+```code
+event.code : 11 and file.path : *.dmp
+```
+
+![screenshot](./assets/3-filecreate.jpg)
+
+And let's have a look at `powershell logs` (***Event ID 4103 and 4104*** - Powershell/Operational logs) - since one of the tools used was out-minidump from the PowerSploit Framework
+
+```code
+"Out-Minidump" AND event.provider :"Microsoft-Windows-PowerShell" 
+```
+
+![screenshot](./assets/3-powershell.jpg)
+
+How about command line logging (***Event ID 4688*** - Windows Security logs)
+
+```code
+event.code : 4688 AND process.command_line : *lsass.exe* 
+```
+
+![screenshot](./assets/3-procdump4688.jpg)
+
+Here we can see that the commandline logging only caught one tool - since the other tools don't pass any arguments that contain ***"lsass.exe"***, you can see how these detection are more brittle than detections that are based on process access and function calls, loaded dll's etc.
 
