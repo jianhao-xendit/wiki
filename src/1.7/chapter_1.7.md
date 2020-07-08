@@ -175,4 +175,5 @@ The resulting query is this:
 Some other good resources for Sigma rule writing:  
 
 https://uncoder.io/  
-https://developer.socprime.com/login/
+https://tdm.socprime.com/
+
