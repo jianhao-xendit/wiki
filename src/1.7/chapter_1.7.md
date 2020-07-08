@@ -171,3 +171,8 @@ The resulting query is this:
 (winlog.channel:"Microsoft\-Windows\-Sysmon\/Operational" AND winlog.event_id:"1" AND process.executable.keyword:(*net.exe OR *net1.exe))
 ```
 ***Again you need to clean up the backslashes and .keyword argument.***
+
+Some other good resources for Sigma rule writing:  
+
+https://uncoder.io/  
+https://developer.socprime.com/login/
