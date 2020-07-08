@@ -96,3 +96,14 @@ cd C:\Program Files\sysmon\
 You can have a look at the sysmon.xml with by using notepad++, during the class we'll go through the configuration more in depth.
 
 ![Screenshot command](./assets/01-sysmonconfig.jpg)
+
+> Hint: We like to use Visual Studio Code with the Sysmon Extension to edit the config files>
+
+https://marketplace.visualstudio.com/items?itemName=DarkOperator.sysmon
+
+https://code.visualstudio.com/download
+
+Thre's a nice Youtube walkthrought here :  
+
+https://www.youtube.com/watch?v=Av7Te0QBLbE&t=181s
+
