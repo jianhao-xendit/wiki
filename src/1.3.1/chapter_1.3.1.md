@@ -103,7 +103,8 @@ https://marketplace.visualstudio.com/items?itemName=DarkOperator.sysmon
 
 https://code.visualstudio.com/download
 
-Thre's a nice Youtube walkthrought here :  
+Thre's a nice Youtube walkthrough here :  
 
-https://www.youtube.com/watch?v=Av7Te0QBLbE&t=181s
+https://www.youtube.com/watch?v=Av7Te0QBLbE
+
 
