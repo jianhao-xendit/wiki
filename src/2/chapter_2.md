@@ -7,6 +7,7 @@
 
 We will mainly focus on attacker behaviour, ***POST exploitation*** - see what Tactics, Techniques and Procedures are being used by attackers, mainly by living off the land (using tools already built-in or available within the environment).
 
+- Initial foothold (Command and control - beaconing)
 - Recon  
 - Privilege Escalation  
 - Persistence  
