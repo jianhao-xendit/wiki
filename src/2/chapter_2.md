@@ -5,11 +5,12 @@
 
 ![image](./assets/01_killchain.png)
 
-We will mainly focus on attacker behaviour, POST exploitation - see what Tactics, Techniques and procedures are being used by attackers, mainly by living off the land (using tools already built-in or available within the environment).
+We will mainly focus on attacker behaviour, ***POST exploitation*** - see what Tactics, Techniques and Procedures are being used by attackers, mainly by living off the land (using tools already built-in or available within the environment).
 
 - Recon  
 - Privilege Escalation  
 - Persistence  
-- Lateral Movement  
+- Lateral Movement
+- Exfiltration  
 
 ![image](./assets/02_mitre.png)
